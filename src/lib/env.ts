@@ -7,7 +7,7 @@ const serverEnvSchema = z.object({
   AGENT_PROVIDER: z
     .enum(["mock", "deepseek", "openai-compatible", "ollama"])
     .default("deepseek"),
-  AGENT_MODEL: z.string().default("deepseek-v4-pro"),
+  AGENT_MODEL: z.string().default("deepseek-v4-flash"),
   AGENT_BASE_URL: z.string().default("https://api.deepseek.com"),
   AGENT_API_KEY: z.string().default(""),
   AGENT_TIMEOUT_MS: z.coerce.number().int().positive().default(30_000),

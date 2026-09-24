@@ -67,4 +67,4 @@
 
 ## Open Questions
 
-- `deepseek-v4-pro` 与 `deepseek-v4-flash` 的成本、延迟和文保场景质量对比需要在真实 Key 可用后验证。
+- 无。当前按用户决定固定使用 `deepseek-v4-flash`，后续如需调整模型必须单独评审。

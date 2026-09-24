@@ -4,7 +4,7 @@
 - [x] 1.2 实现 DeepSeek JSON Output 分析适配器，验证单元测试通过
 - [x] 1.3 实现候选条款引用白名单校验，验证伪造引用被拒绝
 - [x] 1.4 实现真实 Provider 失败后的 Mock 自动降级，验证降级状态被记录
-- [ ] 1.5 在本地 `.env` 填入真实 Key 并完成一次真实 API 调用，验证返回 Provider 为 `deepseek`
+- [x] 1.5 在本地 `.env` 填入真实 Key 并完成一次真实 API 调用，验证返回 Provider 为 `deepseek`
 
 ## 2. MCP Server
 
@@ -22,4 +22,4 @@
 - [x] 3.2 添加 MCP stdio 集成测试，验证完整测试套件通过
 - [x] 3.3 添加 `npm run mcp:dev` 和 `npm run mcp:inspect` 命令
 - [x] 3.4 更新 Provider 矩阵、工具注册表和项目状态
-- [ ] 3.5 完成真实 DeepSeek 调用后归档本变更并创建独立提交
+- [x] 3.5 完成真实 DeepSeek 调用后归档本变更并创建独立提交

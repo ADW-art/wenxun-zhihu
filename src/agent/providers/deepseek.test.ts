@@ -100,7 +100,7 @@ function createProvider(client: OpenAI) {
   return new DeepSeekAgentProvider({
     apiKey: "test-key",
     baseURL: "https://api.deepseek.com",
-    model: "deepseek-v4-pro",
+    model: "deepseek-v4-flash",
     timeoutMs: 30_000,
     client,
     retrieve: async () => [clause],

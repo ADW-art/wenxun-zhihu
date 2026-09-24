@@ -37,7 +37,7 @@ npm run dev
 
 ```text
 AGENT_PROVIDER="deepseek"
-AGENT_MODEL="deepseek-v4-pro"
+AGENT_MODEL="deepseek-v4-flash"
 AGENT_BASE_URL="https://api.deepseek.com"
 DEEPSEEK_API_KEY="你的本地密钥"
 ```

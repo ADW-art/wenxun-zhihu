@@ -10,6 +10,10 @@ export default defineConfig({
   },
   test: {
     environment: "node",
+    env: {
+      AGENT_PROVIDER: "mock",
+      AGENT_MODEL: "mock-conservation-agent",
+    },
     coverage: {
       reporter: ["text", "json", "html"],
     },
