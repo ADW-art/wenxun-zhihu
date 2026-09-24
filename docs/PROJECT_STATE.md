@@ -1,7 +1,7 @@
 # Project State
 
 - 最后更新时间：2026-09-24
-- 最后稳定提交：首个基础设施提交随本次变更创建
+- 最后稳定提交：`ca88a02` `chore: bootstrap project infrastructure`
 - 当前里程碑：基础设施已构建并完成最小闭环验证，等待 UI 设计稿
 - 当前活动规格或分支：`bootstrap-infrastructure` / `main`
 - 已完成功能：需求、数据、架构、智能体边界、认证、Prisma 模型、API 和最小巡查闭环
