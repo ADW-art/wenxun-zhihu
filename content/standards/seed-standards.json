@@ -1,0 +1,150 @@
+{
+  "documents": [
+    {
+      "id": "std_ww_t_0125_2025",
+      "code": "WW/T 0125-2025",
+      "title": "文物建筑防火设计规范",
+      "publisher": "国家文物局",
+      "sourceType": "PUBLIC_STANDARD",
+      "sourceUrl": "https://hbba.sacinfo.org.cn/stdDetail/c1375cc2958e543111248ab262e88c0a49ea9c3d2b18bbe9d27cb04a2a2ba4a1",
+      "version": "2025",
+      "effectiveDate": "2025-06-01T00:00:00.000Z",
+      "language": "zh-CN",
+      "clauses": [
+        {
+          "id": "clause_ww_t_0125_scope",
+          "clauseCode": "1 范围",
+          "heading": "适用范围",
+          "text": "本文件规定了文物建筑防火设计的总体要求、现场勘察与火灾风险评估、消防安全布局、消防给水和灭火设施、火灾自动报警系统、电气等内容。本文件适用于文物建筑的防火设计。",
+          "riskTags": ["fire", "electrical", "evacuation"],
+          "buildingTypes": ["heritage_building"],
+          "isOfficialText": true
+        }
+      ]
+    },
+    {
+      "id": "std_ww_t_0126_2025",
+      "code": "WW/T 0126-2025",
+      "title": "文物建筑电气火灾防控技术规范",
+      "publisher": "国家文物局",
+      "sourceType": "PUBLIC_STANDARD",
+      "sourceUrl": "https://hbba.sacinfo.org.cn/stdDetail/def4df5f2931dfc6196105929807ea88627203a86cba628b0f73f24e526ca333",
+      "version": "2025",
+      "effectiveDate": "2025-06-01T00:00:00.000Z",
+      "language": "zh-CN",
+      "clauses": [
+        {
+          "id": "clause_ww_t_0126_scope",
+          "clauseCode": "1 范围",
+          "heading": "适用范围",
+          "text": "本文件规定了文物建筑的功能分类、电气火灾风险评价、电气火灾隐患整改、电气火灾防控措施设置和安全用电管理与安全检查。本文件适用于使用电能的且具有火灾危险性文物建筑的电气火灾风险评价、电气火灾隐患整改、电气火灾防控措施设置和安全用电管理与安全检查。本文件不适用于正在修缮中的文物建筑的电气火灾风险评价。",
+          "riskTags": ["electrical_fire", "electrical", "maintenance"],
+          "buildingTypes": ["heritage_building"],
+          "isOfficialText": true
+        }
+      ]
+    },
+    {
+      "id": "std_ww_t_0123_2023",
+      "code": "WW/T 0123-2023",
+      "title": "文物建筑火灾风险评估方法",
+      "publisher": "国家文物局",
+      "sourceType": "PUBLIC_STANDARD",
+      "sourceUrl": "https://ndls.cnis.ac.cn/standard/detail/fd6d1168db3085ac6c3f8931b9bdc54a",
+      "version": "2023",
+      "effectiveDate": "2024-07-01T00:00:00.000Z",
+      "language": "zh-CN",
+      "clauses": [
+        {
+          "id": "clause_ww_t_0123_scope",
+          "clauseCode": "1 范围",
+          "heading": "适用范围",
+          "text": "本文件确立了文物建筑火灾风险评估的总体原则，规定了文物建筑火灾风险评估的指标、程序、评估结果分级以及评估报告的编写等方面的要求。本文件适用于文物建筑的火灾风险评估，其他不可移动文物可参照使用。",
+          "riskTags": ["fire", "risk_assessment", "report"],
+          "buildingTypes": ["heritage_building", "immovable_relic"],
+          "isOfficialText": true
+        }
+      ]
+    },
+    {
+      "id": "std_ww_t_0124_2023",
+      "code": "WW/T 0124-2023",
+      "title": "古村落火灾防控导则",
+      "publisher": "国家文物局",
+      "sourceType": "PUBLIC_STANDARD",
+      "sourceUrl": "https://www.ndls.org.cn/standard/detail/a809212dd3892689f71167d7ca0a1a58",
+      "version": "2023",
+      "effectiveDate": "2024-07-01T00:00:00.000Z",
+      "language": "zh-CN",
+      "clauses": [
+        {
+          "id": "clause_ww_t_0124_scope",
+          "clauseCode": "1 范围",
+          "heading": "适用范围",
+          "text": "本文件规定了古村落现场勘察和火灾风险评估、消防安全布局和公共消防设施设置、建筑防火、火灾危险源控制和消防安全管理等方面的要求。本文件适用于含有成片或多处文物建筑的古村落的火灾预防和控制。",
+          "riskTags": ["fire", "ancient_village", "risk_assessment"],
+          "buildingTypes": ["ancient_village"],
+          "isOfficialText": true
+        }
+      ]
+    },
+    {
+      "id": "project_demo_rules_v1",
+      "code": "PROJECT-RULES-V1",
+      "title": "文巡智护演示巡查规则",
+      "publisher": "项目组",
+      "sourceType": "PROJECT_RULE",
+      "sourceUrl": null,
+      "version": "1.0",
+      "effectiveDate": "2026-09-24T00:00:00.000Z",
+      "language": "zh-CN",
+      "clauses": [
+        {
+          "id": "rule_water_01",
+          "clauseCode": "DEMO-WATER-01",
+          "heading": "排水与渗漏巡查",
+          "text": "暴雨后应重点检查屋面、排水沟、墙脚、台基和地下空间。发现积水、湿痕、返潮或排水堵塞时，应记录位置、范围、持续时间和照片证据。",
+          "riskTags": ["water", "seepage", "heavy_rain"],
+          "buildingTypes": ["heritage_building"],
+          "isOfficialText": false
+        },
+        {
+          "id": "rule_structure_01",
+          "clauseCode": "DEMO-STRUCT-01",
+          "heading": "结构异常线索记录",
+          "text": "巡查人员可以记录新增裂缝、倾斜、沉降、构件脱榫或明显变形等观察线索，但系统不得据此直接作出结构安全结论，应提交专业复核。",
+          "riskTags": ["structure", "crack", "deformation"],
+          "buildingTypes": ["heritage_building"],
+          "isOfficialText": false
+        },
+        {
+          "id": "rule_vegetation_01",
+          "clauseCode": "DEMO-VEG-01",
+          "heading": "植被与生物影响巡查",
+          "text": "检查屋面、墙体、台基和排水系统中的植物根系、苔藓、虫害及动物活动。发现植物侵入或生物活动影响建筑构件时，应记录范围和照片并评估是否需要处置。",
+          "riskTags": ["vegetation", "pest", "drainage"],
+          "buildingTypes": ["heritage_building"],
+          "isOfficialText": false
+        },
+        {
+          "id": "rule_human_01",
+          "clauseCode": "DEMO-HUMAN-01",
+          "heading": "人为活动与施工影响巡查",
+          "text": "检查周边施工、车辆振动、游客活动、违规用火用电和未经批准的改动。发现可能影响文物建筑安全的活动时，应记录时间、位置和证据并提升复核优先级。",
+          "riskTags": ["human_activity", "construction", "visitor"],
+          "buildingTypes": ["heritage_building"],
+          "isOfficialText": false
+        },
+        {
+          "id": "rule_evidence_01",
+          "clauseCode": "DEMO-EVIDENCE-01",
+          "heading": "整改证据完整性",
+          "text": "整改证据至少应包含处理说明、完成时间、整改后照片或文件。证据不能证明原风险已消除时，应驳回并说明缺失内容。",
+          "riskTags": ["evidence", "rectification", "closure"],
+          "buildingTypes": ["heritage_building"],
+          "isOfficialText": false
+        }
+      ]
+    }
+  ]
+}

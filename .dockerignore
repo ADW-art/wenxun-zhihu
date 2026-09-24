@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.env
+coverage
+uploads
+output
+tmp
+*.log
+*.tsbuildinfo
+

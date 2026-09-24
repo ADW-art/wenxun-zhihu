@@ -1,0 +1,12 @@
+node_modules/
+.next/
+coverage/
+dist/
+out/
+package-lock.json
+tsconfig.tsbuildinfo
+Codex通用网页与智能体项目启动构建指南.md
+uploads/
+tmp/
+output/
+

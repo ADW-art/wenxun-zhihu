@@ -1,0 +1,417 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  INSPECTOR
+  RECTIFIER
+  REVIEWER
+  ADMIN
+}
+
+enum BuildingStatus {
+  ACTIVE
+  ARCHIVED
+}
+
+enum InspectionStatus {
+  DRAFT
+  SUBMITTED
+  ANALYZING
+  PENDING_REVIEW
+  RECTIFYING
+  PENDING_CLOSURE
+  CLOSED
+  REJECTED
+}
+
+enum FindingStatus {
+  PROPOSED
+  CONFIRMED
+  REJECTED
+  RESOLVED
+}
+
+enum RiskType {
+  FIRE
+  ELECTRICAL
+  WATER
+  STRUCTURE
+  VEGETATION
+  HUMAN_ACTIVITY
+  MATERIAL_DETERIORATION
+  TOURIST_PRESSURE
+  CONSTRUCTION_IMPACT
+  OTHER
+}
+
+enum RiskSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum TaskStatus {
+  OPEN
+  IN_PROGRESS
+  PENDING_REVIEW
+  CLOSED
+  REJECTED
+}
+
+enum EvidenceKind {
+  PHOTO
+  DOCUMENT
+  NOTE
+}
+
+enum EvidenceSourceType {
+  SELF_CAPTURED
+  CC0
+  CC_BY
+  PUBLIC_DOMAIN
+  AI_SYNTHETIC
+  PERMISSION_GRANTED
+  PROJECT_GENERATED
+  UNKNOWN
+}
+
+enum ReviewAction {
+  CONFIRM_FINDING
+  REJECT_FINDING
+  CREATE_TASK
+  APPROVE_TASK
+  REJECT_TASK
+  CLOSE_INSPECTION
+  ARCHIVE
+}
+
+enum AgentRunStatus {
+  RUNNING
+  COMPLETED
+  FAILED
+  DEGRADED
+}
+
+enum CallStatus {
+  SUCCESS
+  ERROR
+  TIMEOUT
+}
+
+enum StandardSourceType {
+  PUBLIC_STANDARD
+  PROJECT_RULE
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  inspections  Inspection[]        @relation("InspectionInspector")
+  findings     Finding[]           @relation("FindingConfirmedBy")
+  assigned     RectificationTask[] @relation("TaskAssignee")
+  createdTasks RectificationTask[] @relation("TaskCreatedBy")
+  reviews      ReviewRecord[]      @relation("ReviewActor")
+  taskEvidence TaskEvidence[]      @relation("EvidenceSubmittedBy")
+  auditLogs    AuditLog[]          @relation("AuditActor")
+}
+
+model Building {
+  id           String         @id @default(cuid())
+  code         String         @unique
+  name         String
+  type         String
+  era          String
+  addressLabel String
+  summary      String         @db.Text
+  riskTags     String[]       @default([])
+  status       BuildingStatus @default(ACTIVE)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  inspections Inspection[]
+  riskHistory BuildingRiskHistory[]
+}
+
+model BuildingRiskHistory {
+  id         String       @id @default(cuid())
+  buildingId String
+  riskType   RiskType
+  severity   RiskSeverity
+  summary    String       @db.Text
+  happenedAt DateTime
+  createdAt  DateTime     @default(now())
+
+  building Building @relation(fields: [buildingId], references: [id], onDelete: Cascade)
+
+  @@index([buildingId, happenedAt])
+}
+
+model Inspection {
+  id          String           @id @default(cuid())
+  buildingId  String
+  inspectorId String
+  status      InspectionStatus @default(DRAFT)
+  season      String
+  weather     String
+  summary     String           @db.Text
+  plannedFor  DateTime?
+  submittedAt DateTime?
+  completedAt DateTime?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  building  Building             @relation(fields: [buildingId], references: [id])
+  inspector User                 @relation("InspectionInspector", fields: [inspectorId], references: [id])
+  evidence  InspectionEvidence[]
+  findings  Finding[]
+  agentRuns AgentRun[]
+  reviews   ReviewRecord[]
+
+  @@index([buildingId, createdAt])
+  @@index([inspectorId, status])
+}
+
+model InspectionEvidence {
+  id           String             @id @default(cuid())
+  inspectionId String
+  kind         EvidenceKind
+  originalName String
+  storageKey   String?
+  externalUrl  String?
+  mimeType     String
+  sizeBytes    Int
+  altText      String?
+  sourceType   EvidenceSourceType @default(UNKNOWN)
+  licenseNote  String?
+  exifStripped Boolean            @default(false)
+  createdAt    DateTime           @default(now())
+
+  inspection Inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+
+  @@index([inspectionId, createdAt])
+}
+
+model Finding {
+  id                String        @id @default(cuid())
+  inspectionId      String
+  title             String
+  description       String        @db.Text
+  riskType          RiskType
+  severity          RiskSeverity
+  status            FindingStatus @default(PROPOSED)
+  confidence        Float?
+  uncertainty       String?       @db.Text
+  recommendedAction String        @db.Text
+  confirmedById     String?
+  confirmedAt       DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  inspection  Inspection          @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+  confirmedBy User?               @relation("FindingConfirmedBy", fields: [confirmedById], references: [id])
+  citations   FindingCitation[]
+  tasks       RectificationTask[]
+  reviews     ReviewRecord[]
+
+  @@index([inspectionId, status])
+  @@index([riskType, severity])
+}
+
+model StandardDocument {
+  id            String             @id @default(cuid())
+  code          String             @unique
+  title         String
+  publisher     String
+  sourceType    StandardSourceType
+  sourceUrl     String?
+  version       String
+  effectiveDate DateTime?
+  language      String             @default("zh-CN")
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  clauses StandardClause[]
+}
+
+model StandardClause {
+  id             String   @id @default(cuid())
+  documentId     String
+  clauseCode     String
+  heading        String
+  text           String   @db.Text
+  riskTags       String[] @default([])
+  buildingTypes  String[] @default([])
+  isOfficialText Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  document  StandardDocument  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  citations FindingCitation[]
+
+  @@unique([documentId, clauseCode])
+  @@index([isOfficialText])
+}
+
+model FindingCitation {
+  id        String   @id @default(cuid())
+  findingId String
+  clauseId  String
+  relevance String   @db.Text
+  createdAt DateTime @default(now())
+
+  finding Finding        @relation(fields: [findingId], references: [id], onDelete: Cascade)
+  clause  StandardClause @relation(fields: [clauseId], references: [id])
+
+  @@unique([findingId, clauseId])
+}
+
+model RectificationTask {
+  id                 String       @id @default(cuid())
+  findingId          String
+  assigneeId         String
+  createdById        String
+  title              String
+  description        String       @db.Text
+  acceptanceCriteria String       @db.Text
+  priority           RiskSeverity
+  status             TaskStatus   @default(OPEN)
+  dueAt              DateTime
+  completedAt        DateTime?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  finding   Finding        @relation(fields: [findingId], references: [id], onDelete: Cascade)
+  assignee  User           @relation("TaskAssignee", fields: [assigneeId], references: [id])
+  createdBy User           @relation("TaskCreatedBy", fields: [createdById], references: [id])
+  evidence  TaskEvidence[]
+  reviews   ReviewRecord[]
+
+  @@index([assigneeId, status])
+  @@index([dueAt, status])
+}
+
+model TaskEvidence {
+  id            String             @id @default(cuid())
+  taskId        String
+  submittedById String
+  kind          EvidenceKind
+  description   String             @db.Text
+  originalName  String?
+  storageKey    String?
+  externalUrl   String?
+  mimeType      String
+  sizeBytes     Int
+  sourceType    EvidenceSourceType @default(SELF_CAPTURED)
+  licenseNote   String?
+  exifStripped  Boolean            @default(false)
+  createdAt     DateTime           @default(now())
+
+  task        RectificationTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  submittedBy User              @relation("EvidenceSubmittedBy", fields: [submittedById], references: [id])
+
+  @@index([taskId, createdAt])
+}
+
+model ReviewRecord {
+  id           String       @id @default(cuid())
+  inspectionId String?
+  findingId    String?
+  taskId       String?
+  actorId      String
+  action       ReviewAction
+  comment      String       @db.Text
+  createdAt    DateTime     @default(now())
+
+  inspection Inspection?        @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+  finding    Finding?           @relation(fields: [findingId], references: [id], onDelete: Cascade)
+  task       RectificationTask? @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  actor      User               @relation("ReviewActor", fields: [actorId], references: [id])
+
+  @@index([actorId, createdAt])
+}
+
+model AgentRun {
+  id                String         @id @default(cuid())
+  inspectionId      String
+  status            AgentRunStatus @default(RUNNING)
+  provider          String
+  model             String
+  promptVersion     String
+  toolSchemaVersion String
+  inputJson         Json
+  outputJson        Json?
+  degraded          Boolean        @default(false)
+  errorCode         String?
+  errorMessage      String?        @db.Text
+  startedAt         DateTime       @default(now())
+  completedAt       DateTime?
+
+  inspection Inspection  @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+  modelCalls ModelCall[]
+  toolCalls  ToolCall[]
+
+  @@index([inspectionId, startedAt])
+  @@index([status, startedAt])
+}
+
+model ModelCall {
+  id           String     @id @default(cuid())
+  agentRunId   String
+  provider     String
+  model        String
+  status       CallStatus
+  latencyMs    Int
+  inputTokens  Int?
+  outputTokens Int?
+  errorCode    String?
+  createdAt    DateTime   @default(now())
+
+  agentRun AgentRun @relation(fields: [agentRunId], references: [id], onDelete: Cascade)
+
+  @@index([agentRunId, createdAt])
+}
+
+model ToolCall {
+  id            String     @id @default(cuid())
+  agentRunId    String
+  toolName      String
+  argumentsJson Json
+  resultJson    Json?
+  status        CallStatus
+  latencyMs     Int
+  errorCode     String?
+  createdAt     DateTime   @default(now())
+
+  agentRun AgentRun @relation(fields: [agentRunId], references: [id], onDelete: Cascade)
+
+  @@index([agentRunId, createdAt])
+}
+
+model AuditLog {
+  id           String   @id @default(cuid())
+  actorId      String?
+  entityType   String
+  entityId     String
+  action       String
+  metadataJson Json?
+  requestId    String?
+  createdAt    DateTime @default(now())
+
+  actor User? @relation("AuditActor", fields: [actorId], references: [id])
+
+  @@index([entityType, entityId, createdAt])
+  @@index([actorId, createdAt])
+}
