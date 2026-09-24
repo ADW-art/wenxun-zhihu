@@ -1,6 +1,7 @@
 # agent-provider-integration Specification
 
 ## Purpose
+
 为巡查智能体提供可替换的真实大模型 Provider，使系统能够在保留结构化约束、来源校验和降级能力的同时使用 DeepSeek 完成巡查分析。
 
 ## Requirements

@@ -1,6 +1,7 @@
 # mcp-inspection-tools Specification
 
 ## Purpose
+
 为支持 Model Context Protocol 的客户端提供文物建筑巡查、规范检索、风险分析预览和整改任务查询能力，使外部智能体能够安全复用文巡智护的业务数据与工具。
 
 ## Requirements
