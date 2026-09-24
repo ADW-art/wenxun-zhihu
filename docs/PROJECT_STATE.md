@@ -1,12 +1,12 @@
 # Project State
 
 - 最后更新时间：2026-09-24
-- 最后稳定提交：`ca88a02` `chore: bootstrap project infrastructure`
-- 当前里程碑：基础设施已构建并完成最小闭环验证，等待 UI 设计稿
-- 当前活动规格或分支：`bootstrap-infrastructure` / `main`
-- 已完成功能：需求、数据、架构、智能体边界、认证、Prisma 模型、API 和最小巡查闭环
-- 正在进行：等待同学生成并交付 UI 设计
-- 已知问题：真实模型 Provider、公网部署平台和账号尚未确定
-- 阻塞决策：UI 设计稿尚未交付
-- 最近验证结果：格式、Lint、类型检查、7 项测试、生产构建、健康检查、浏览器登录和智能分析流程通过
-- 下一步：收到 Figma 或可编辑 UI 后，按其设计系统重构页面并继续完成正式版功能
+- 最后稳定提交：`fea0ba9` `chore: archive completed infrastructure change`
+- 当前里程碑：DeepSeek Provider 与 MCP 只读工具已实现，等待真实密钥验证
+- 当前活动规格或分支：`deepseek-mcp-integration` / `main`
+- 已完成功能：基础设施、认证、Prisma 模型、Web API、巡查基础闭环、文件证据、报告导出、DeepSeek 适配层和 MCP stdio 服务
+- 正在进行：真实 DeepSeek 调用验证
+- 已知问题：本地 `.env` 尚未填入真实 DeepSeek Key
+- 阻塞决策：UI 设计稿尚未交付，但不阻塞基础功能开发
+- 最近验证结果：格式、Lint、类型检查、18 项测试、生产构建、文件上传、报告下载和 MCP 协议测试通过
+- 下一步：使用真实 Key 验证 DeepSeek，再切换为同学提供的 UI

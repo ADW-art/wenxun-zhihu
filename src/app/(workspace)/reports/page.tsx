@@ -63,12 +63,17 @@ export default async function ReportsPage() {
                     {formatDateTime(inspection.updatedAt)}
                   </p>
                 </div>
-                <Button asChild variant="secondary">
-                  <Link href={`/inspections/${inspection.id}`}>
-                    <FileDown className="size-4" aria-hidden="true" />
-                    查看报告数据
-                  </Link>
-                </Button>
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild variant="secondary">
+                    <Link href={`/inspections/${inspection.id}`}>查看报告数据</Link>
+                  </Button>
+                  <Button asChild>
+                    <a href={`/api/reports/${inspection.id}/export`}>
+                      <FileDown className="size-4" aria-hidden="true" />
+                      下载报告
+                    </a>
+                  </Button>
+                </div>
               </div>
             ))}
           </div>

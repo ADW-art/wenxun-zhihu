@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -151,6 +152,59 @@ export default async function InspectionDetailPage({
 
       <section className="grid gap-5 xl:grid-cols-[1.45fr_0.55fr]">
         <div className="space-y-5">
+          <Card>
+            <CardHeader>
+              <h2 className="text-lg font-bold">现场证据</h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                来源、授权和文件信息随巡查记录保存。
+              </p>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {inspection.evidence.length === 0 ? (
+                <p className="rounded-md border border-dashed border-border p-4 text-sm text-muted-foreground">
+                  本次巡查未上传文件
+                </p>
+              ) : (
+                inspection.evidence.map((evidence) => (
+                  <div
+                    key={evidence.id}
+                    className="overflow-hidden rounded-md border border-border"
+                  >
+                    {evidence.storageKey && evidence.mimeType.startsWith("image/") ? (
+                      <Image
+                        src={`/api/files/${evidence.storageKey}`}
+                        alt={evidence.altText ?? evidence.originalName}
+                        width={640}
+                        height={360}
+                        unoptimized
+                        className="h-40 w-full object-cover"
+                      />
+                    ) : null}
+                    <div className="p-3">
+                      <p className="truncate text-sm font-semibold">
+                        {evidence.originalName}
+                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {evidence.kind} · {evidence.sourceType} ·{" "}
+                        {Math.ceil(evidence.sizeBytes / 1024)} KB
+                      </p>
+                      {evidence.storageKey ? (
+                        <a
+                          href={`/api/files/${evidence.storageKey}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-2 inline-flex text-xs font-semibold text-primary hover:underline"
+                        >
+                          查看原文件
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                ))
+              )}
+            </CardContent>
+          </Card>
+
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
               <div>

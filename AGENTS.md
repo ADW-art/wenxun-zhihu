@@ -34,6 +34,9 @@
 - 单元测试：`npm test`
 - 数据库集成测试：`npm run test:integration`
 - 构建：`npm run build`
+- MCP 开发：`npm run mcp:dev`
+- MCP Inspector：`npm run mcp:inspect`
+- Codex MCP 配置：`.codex/config.toml`
 - 数据库生成：`npm run db:generate`
 - 数据库迁移：`npm run db:migrate`
 - 种子数据：`npm run db:seed`

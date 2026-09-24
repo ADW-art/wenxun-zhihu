@@ -144,6 +144,8 @@ export async function runInspectionAnalysis(inspectionId: string, actorId: strin
         where: { id: run.id },
         data: {
           status: result.degraded ? AgentRunStatus.DEGRADED : AgentRunStatus.COMPLETED,
+          provider: result.metadata.provider,
+          model: result.metadata.model,
           outputJson: result.output,
           degraded: result.degraded,
           completedAt: new Date(),

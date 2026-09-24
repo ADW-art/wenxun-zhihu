@@ -97,6 +97,18 @@ export default async function NewInspectionPage({
                 </span>
               </label>
 
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold">现场照片或文件</span>
+                <Input
+                  name="photo"
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,application/pdf,text/plain"
+                />
+                <span className="mt-2 block text-xs leading-5 text-muted-foreground">
+                  支持 JPG、PNG、WebP、PDF 和 TXT，最大 8 MB。图片会自动移除 EXIF。
+                </span>
+              </label>
+
               {query.error ? (
                 <p
                   role="alert"

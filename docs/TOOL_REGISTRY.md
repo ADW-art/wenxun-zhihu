@@ -25,3 +25,18 @@
 ## 3. 版本
 
 当前工具 Schema 版本：`tools.v1`。修改参数或语义时必须提升版本并重跑 Agent 评测。
+
+## 4. MCP 工具
+
+MCP 服务 `wenxun-mcp-server` 使用 stdio transport，当前只暴露只读或预览工具：
+
+| MCP 工具                          | 作用                               | 写入数据库 |
+| --------------------------------- | ---------------------------------- | ---------: |
+| `wenxun_list_buildings`           | 分页查询脱敏建筑档案               |         否 |
+| `wenxun_get_building`             | 获取建筑历史风险和最近巡查         |         否 |
+| `wenxun_search_standards`         | 检索公开标准条款和项目规则         |         否 |
+| `wenxun_analyze_inspection_text`  | 运行不落库的巡查分析预览           |         否 |
+| `wenxun_get_inspection`           | 获取巡查、风险、证据和复核报告数据 |         否 |
+| `wenxun_list_rectification_tasks` | 分页查询整改任务                   |         否 |
+
+所有 MCP 工具使用严格 Zod Schema，并声明 `readOnlyHint`、`destructiveHint`、`idempotentHint` 和 `openWorldHint`。

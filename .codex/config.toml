@@ -1,0 +1,18 @@
+[mcp_servers.wenxun]
+command = "node"
+args = ["node_modules/tsx/dist/cli.mjs", "src/mcp/index.ts"]
+cwd = "E:/code/项目/计算机应用大赛/智能体"
+env_vars = [
+  "DATABASE_URL",
+  "AUTH_SECRET",
+  "AGENT_PROVIDER",
+  "AGENT_MODEL",
+  "AGENT_BASE_URL",
+  "AGENT_API_KEY",
+  "DEEPSEEK_API_KEY",
+  "APP_URL",
+]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+default_tools_approval_mode = "prompt"
+

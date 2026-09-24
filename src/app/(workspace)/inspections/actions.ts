@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { RiskSeverity, Role } from "@prisma/client";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth/guard";
+import { getFileStorage } from "@/lib/storage";
 import {
   confirmFinding,
   createInspection,
@@ -21,12 +22,30 @@ export async function createInspectionAction(formData: FormData) {
 
   let inspectionId: string;
   try {
+    const uploadedFile = formData.get("photo");
+    const savedFile =
+      uploadedFile instanceof File && uploadedFile.size > 0
+        ? await getFileStorage().saveEvidence(uploadedFile)
+        : null;
     const inspection = await createInspection({
       actorId: session.user.id,
       buildingId: text(formData, "buildingId"),
       season: text(formData, "season"),
       weather: text(formData, "weather"),
       summary: text(formData, "summary"),
+      evidence: savedFile
+        ? [
+            {
+              kind: savedFile.mimeType.startsWith("image/") ? "PHOTO" : "DOCUMENT",
+              originalName: savedFile.originalName,
+              storageKey: savedFile.storageKey,
+              mimeType: savedFile.mimeType,
+              sizeBytes: savedFile.sizeBytes,
+              sourceType: savedFile.sourceType,
+              exifStripped: savedFile.exifStripped,
+            },
+          ]
+        : undefined,
     });
     inspectionId = inspection.id;
   } catch (error) {

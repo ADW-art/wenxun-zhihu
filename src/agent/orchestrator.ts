@@ -4,7 +4,7 @@ import {
   type InspectionAgentInput,
   type InspectionAgentOutput,
 } from "./schemas";
-import { createAgentProvider } from "./provider";
+import { createAgentProvider, createMockProvider } from "./provider";
 import type { ProviderMetadata } from "./providers/types";
 
 export type AnalysisResult = {
@@ -25,14 +25,13 @@ export async function analyzeInspection(
       ...result,
       output: inspectionAgentOutputSchema.parse(result.output),
     };
-  } catch {
-    const fallback = await provider.generateInspectionAnalysis({
+  } catch (error) {
+    console.error("[agent] Provider failed, falling back to mock.", error);
+    const fallback = await createMockProvider().generateInspectionAnalysis({
       ...input,
       inspection: {
         ...input.inspection,
-        summary:
-          input.inspection.summary ||
-          "模型服务不可用，使用预置巡查分析结果，请人工补充证据。",
+        summary: input.inspection.summary,
       },
     });
 

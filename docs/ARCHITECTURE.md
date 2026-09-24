@@ -29,6 +29,17 @@ Next.js App Router
 PostgreSQL + Prisma
 ```
 
+MCP 服务复用同一领域服务层：
+
+```text
+MCP Client
+  -> wenxun-mcp-server (stdio)
+  -> read-only tools
+  -> Prisma / Agent Provider
+```
+
+首版 MCP 工具不允许写入数据库，避免外部客户端绕过 Web 角色权限和人工确认流程。
+
 ## 3. 数据流
 
 ```text
@@ -53,6 +64,7 @@ PostgreSQL + Prisma
 - 有副作用的工具必须经过用户确认。
 - Provider 输出失败或 Schema 不合法时重试一次，再切换降级结果。
 - Prompt 和工具 Schema 有版本号。
+- MCP 只暴露只读或预览能力。
 
 ## 5. 部署拓扑
 

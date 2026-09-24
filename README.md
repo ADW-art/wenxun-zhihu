@@ -31,6 +31,36 @@ npm run dev
 
 访问 `http://localhost:3000`。
 
+## DeepSeek
+
+在本地 `.env` 中设置：
+
+```text
+AGENT_PROVIDER="deepseek"
+AGENT_MODEL="deepseek-v4-pro"
+AGENT_BASE_URL="https://api.deepseek.com"
+DEEPSEEK_API_KEY="你的本地密钥"
+```
+
+不要提交 `.env`。没有密钥或 DeepSeek 调用失败时，系统会自动降级到 Mock Provider。
+
+填入密钥后运行真实 Provider 冒烟测试：
+
+```powershell
+npm run ai:smoke
+```
+
+## MCP
+
+```powershell
+npm run mcp:dev
+npm run mcp:inspect
+```
+
+`mcp:dev` 启动本地 stdio MCP 服务。`mcp:inspect` 使用官方 MCP Inspector 调试工具列表和调用参数。
+
+项目级 Codex MCP 配置位于 `.codex/config.toml`。信任本项目后，Codex 会自动加载 `wenxun-mcp-server`。
+
 ## 检查
 
 ```powershell
@@ -70,6 +100,7 @@ npm run test:integration
 - [RAG 规格](docs/RAG_SPEC.md)
 - [评测计划](docs/EVAL_PLAN.md)
 - [UI 设计需求](docs/UI_DESIGN_BRIEF.md)
+- [MCP 服务说明](docs/MCP.md)
 
 ## 安全
 

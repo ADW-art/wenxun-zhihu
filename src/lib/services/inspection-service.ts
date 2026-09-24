@@ -1,4 +1,6 @@
 import {
+  EvidenceKind,
+  EvidenceSourceType,
   FindingStatus,
   InspectionStatus,
   RiskSeverity,
@@ -25,6 +27,16 @@ export async function createInspection(input: {
   season: string;
   weather: string;
   summary: string;
+  evidence?: Array<{
+    kind: EvidenceKind;
+    originalName: string;
+    storageKey?: string;
+    mimeType: string;
+    sizeBytes: number;
+    sourceType?: EvidenceSourceType;
+    licenseNote?: string;
+    exifStripped?: boolean;
+  }>;
 }) {
   const data = createInspectionSchema.parse(input);
   const building = await prisma.building.findUnique({
@@ -40,6 +52,20 @@ export async function createInspection(input: {
       season: data.season,
       weather: data.weather,
       summary: data.summary,
+      evidence: input.evidence?.length
+        ? {
+            create: input.evidence.map((evidence) => ({
+              kind: evidence.kind,
+              originalName: evidence.originalName,
+              storageKey: evidence.storageKey,
+              mimeType: evidence.mimeType,
+              sizeBytes: evidence.sizeBytes,
+              sourceType: evidence.sourceType ?? "SELF_CAPTURED",
+              licenseNote: evidence.licenseNote,
+              exifStripped: evidence.exifStripped ?? false,
+            })),
+          }
+        : undefined,
     },
   });
 

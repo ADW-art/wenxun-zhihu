@@ -170,6 +170,16 @@ export default async function TaskDetailPage({
                     <p className="mt-3 text-xs text-muted-foreground">
                       类型：{evidence.kind} · 来源：{evidence.sourceType}
                     </p>
+                    {evidence.storageKey ? (
+                      <a
+                        href={`/api/files/${evidence.storageKey}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex text-xs font-semibold text-primary hover:underline"
+                      >
+                        打开证据文件
+                      </a>
+                    ) : null}
                   </div>
                 ))
               )}
@@ -180,6 +190,20 @@ export default async function TaskDetailPage({
                   className="space-y-4 border-t border-border pt-5"
                 >
                   <input type="hidden" name="taskId" value={task.id} />
+                  <label className="block">
+                    <span className="mb-2 block text-sm font-semibold">
+                      整改照片或文件
+                    </span>
+                    <input
+                      name="file"
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp,application/pdf,text/plain"
+                      className="block min-h-11 w-full cursor-pointer rounded-md border border-border bg-white px-3 py-2 text-sm file:mr-3 file:rounded file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-sm file:font-semibold"
+                    />
+                    <span className="mt-2 block text-xs text-muted-foreground">
+                      最大 8 MB。图片会自动转为 WebP 并移除 EXIF。
+                    </span>
+                  </label>
                   <Textarea
                     name="description"
                     required
