@@ -58,6 +58,7 @@ function inferRiskTags(input: InspectionAgentInput) {
 function schemaInstructions() {
   return `
 请只输出一个 JSON 对象，不要输出 Markdown 代码块或解释文字。
+输出必须紧凑，所有说明使用简短中文，不要重复输入内容。
 JSON 必须满足以下结构：
 {
   "plan": [
@@ -100,10 +101,13 @@ JSON 必须满足以下结构：
 }
 
 规则：
-1. 每个 finding 至少包含一个 citations。
-2. citations.clauseId 只能使用 candidateClauses 中出现的 id。
-3. 没有可靠依据时不要编造条款，应减少 findings 并写入 uncertainties。
-4. 不得作出结构安全鉴定，不得批准修复方案。
+1. plan 最多 3 项，findings 最多 3 项，suggestedTasks 最多 3 项。
+2. 每个 finding 只保留 1 个最关键的 citations。
+3. title 不超过 20 个汉字，rationale 和 description 不超过 60 个汉字，recommendedAction 不超过 80 个汉字。
+4. 每个 finding 至少包含一个 citations。
+5. citations.clauseId 只能使用 candidateClauses 中出现的 id。
+6. 没有可靠依据时不要编造条款，应减少 findings 并写入 uncertainties，uncertainties 最多 3 项。
+7. 不得作出结构安全鉴定，不得批准修复方案。
 `.trim();
 }
 
@@ -187,7 +191,12 @@ export class DeepSeekAgentProvider implements AgentProvider {
       ],
     });
 
-    const content = responseText(completion.choices[0]?.message?.content);
+    const choice = completion.choices[0];
+    if (choice?.finish_reason === "length") {
+      throw new Error("DeepSeek 返回内容被 max_tokens 截断");
+    }
+
+    const content = responseText(choice?.message?.content);
     if (!content) {
       throw new Error("DeepSeek 返回了空内容");
     }

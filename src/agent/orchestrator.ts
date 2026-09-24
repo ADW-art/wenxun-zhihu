@@ -18,27 +18,26 @@ export async function analyzeInspection(
 ): Promise<AnalysisResult> {
   const input = inspectionAgentInputSchema.parse(rawInput);
   const provider = createAgentProvider();
+  let lastError: unknown;
 
-  try {
-    const result = await provider.generateInspectionAnalysis(input);
-    return {
-      ...result,
-      output: inspectionAgentOutputSchema.parse(result.output),
-    };
-  } catch (error) {
-    console.error("[agent] Provider failed, falling back to mock.", error);
-    const fallback = await createMockProvider().generateInspectionAnalysis({
-      ...input,
-      inspection: {
-        ...input.inspection,
-        summary: input.inspection.summary,
-      },
-    });
-
-    return {
-      ...fallback,
-      output: inspectionAgentOutputSchema.parse(fallback.output),
-      degraded: true,
-    };
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      const result = await provider.generateInspectionAnalysis(input);
+      return {
+        ...result,
+        output: inspectionAgentOutputSchema.parse(result.output),
+      };
+    } catch (error) {
+      lastError = error;
+    }
   }
+
+  console.error("[agent] Provider failed twice, falling back to mock.", lastError);
+  const fallback = await createMockProvider().generateInspectionAnalysis(input);
+
+  return {
+    ...fallback,
+    output: inspectionAgentOutputSchema.parse(fallback.output),
+    degraded: true,
+  };
 }

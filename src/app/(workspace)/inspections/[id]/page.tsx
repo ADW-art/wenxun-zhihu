@@ -15,12 +15,14 @@ import { Role } from "@prisma/client";
 import { auth } from "@/auth";
 import { inspectionAgentOutputSchema } from "@/agent/schemas";
 import { Button } from "@/components/ui/button";
+import { SubmitButton } from "@/components/submit-button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { RiskBadge } from "@/components/ui/risk-badge";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { riskTypeLabels } from "@/lib/domain/risk";
+import { NotFoundError } from "@/lib/errors";
 import { prisma } from "@/lib/prisma";
 import { getInspectionDetail } from "@/lib/services/inspection-service";
 import { formatDate, formatDateTime } from "@/lib/utils";
@@ -61,14 +63,19 @@ export default async function InspectionDetailPage({
 
   if (!session?.user) notFound();
 
-  const [inspection, rectifiers] = await Promise.all([
-    getInspectionDetail(id),
-    prisma.user.findMany({
-      where: { role: Role.RECTIFIER },
-      select: { id: true, name: true, email: true },
-      orderBy: { name: "asc" },
-    }),
-  ]);
+  let inspection;
+  try {
+    inspection = await getInspectionDetail(id);
+  } catch (error) {
+    if (error instanceof NotFoundError) notFound();
+    throw error;
+  }
+
+  const rectifiers = await prisma.user.findMany({
+    where: { role: Role.RECTIFIER },
+    select: { id: true, name: true, email: true },
+    orderBy: { name: "asc" },
+  });
 
   const latestRun = inspection.agentRuns[0];
   const parsedOutput = latestRun?.outputJson
@@ -136,10 +143,10 @@ export default async function InspectionDetailPage({
             inspection.status === "ANALYZING") ? (
             <form action={submitInspectionAction}>
               <input type="hidden" name="inspectionId" value={inspection.id} />
-              <Button type="submit">
+              <SubmitButton pendingText="智能体分析中，请稍候">
                 <Sparkles className="size-4" aria-hidden="true" />
                 提交并运行智能分析
-              </Button>
+              </SubmitButton>
             </form>
           ) : null}
         </div>
