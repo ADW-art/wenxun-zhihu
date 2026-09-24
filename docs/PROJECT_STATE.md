@@ -1,7 +1,7 @@
 # Project State
 
 - 最后更新时间：2026-09-24
-- 最后稳定提交：`39b569f` `feat: complete core inspection loop and MCP server`
+- 最后稳定提交：`9d39da5` `feat: verify deepseek flash integration`
 - 当前里程碑：DeepSeek Flash Provider 与 MCP 只读工具已实现并验证
 - 当前活动规格或分支：`deepseek-mcp-integration` / `main`
 - 已完成功能：基础设施、认证、Prisma 模型、Web API、巡查基础闭环、文件证据、报告导出、DeepSeek 适配层和 MCP stdio 服务
