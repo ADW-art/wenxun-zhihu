@@ -103,7 +103,7 @@ export default async function InspectionDetailPage({
       {query.error ? (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+          className="rounded-md border border-status-danger-border bg-status-danger-surface px-4 py-3 text-sm text-status-danger-foreground"
         >
           {decodeURIComponent(query.error)}
         </p>
@@ -111,7 +111,7 @@ export default async function InspectionDetailPage({
       {query.analyzed || query.confirmed || query.taskCreated ? (
         <p
           role="status"
-          className="flex items-center gap-2 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"
+          className="flex items-center gap-2 rounded-md border border-status-success-border bg-status-success-surface px-4 py-3 text-sm text-status-success-foreground"
         >
           <CheckCircle2 className="size-4" aria-hidden="true" />
           {query.taskCreated
@@ -122,7 +122,7 @@ export default async function InspectionDetailPage({
         </p>
       ) : null}
 
-      <header className="rounded-lg border border-border bg-white p-6">
+      <header className="rounded-lg border border-border bg-surface-panel p-6">
         <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-start">
           <div>
             <div className="flex flex-wrap items-center gap-3">
@@ -273,13 +273,15 @@ export default async function InspectionDetailPage({
                         ) : null}
                       </div>
 
-                      <div className="mt-4 rounded-md border border-amber-200 bg-amber-50/60 p-4">
-                        <p className="text-xs font-semibold text-amber-900">建议处置</p>
-                        <p className="mt-2 text-sm leading-6 text-amber-950/80">
+                      <div className="mt-4 rounded-md border border-status-warning-border bg-status-warning-surface/60 p-4">
+                        <p className="text-xs font-semibold text-status-warning-foreground">
+                          建议处置
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-status-warning-foreground/80">
                           {finding.recommendedAction}
                         </p>
                         {finding.uncertainty ? (
-                          <p className="mt-3 text-xs leading-5 text-amber-900">
+                          <p className="mt-3 text-xs leading-5 text-status-warning-foreground">
                             不确定项：{finding.uncertainty}
                           </p>
                         ) : null}
@@ -519,13 +521,18 @@ export default async function InspectionDetailPage({
           </Card>
 
           {agentOutput?.uncertainties.length ? (
-            <Card className="border-amber-200 bg-amber-50/60">
+            <Card className="border-status-warning-border bg-status-warning-surface/60">
               <CardHeader>
-                <h2 className="font-bold text-amber-950">需要人工关注</h2>
+                <h2 className="font-bold text-status-warning-foreground">
+                  需要人工关注
+                </h2>
               </CardHeader>
               <CardContent className="space-y-2">
                 {agentOutput.uncertainties.map((uncertainty) => (
-                  <p key={uncertainty} className="text-xs leading-5 text-amber-950/80">
+                  <p
+                    key={uncertainty}
+                    className="text-xs leading-5 text-status-warning-foreground/80"
+                  >
                     {uncertainty}
                   </p>
                 ))}

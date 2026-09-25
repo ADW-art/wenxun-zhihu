@@ -9,6 +9,8 @@ export default defineConfig({
     },
   },
   test: {
+    include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+    exclude: ["node_modules/**", ".next/**", "coverage/**", "dist/**"],
     environment: "node",
     env: {
       AGENT_PROVIDER: "mock",

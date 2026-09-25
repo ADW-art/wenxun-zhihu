@@ -42,7 +42,7 @@ export default async function BuildingDetailPage({
         </Button>
       </div>
 
-      <header className="rounded-lg border border-border bg-white p-6">
+      <header className="rounded-lg border border-border bg-surface-panel p-6">
         <p className="font-mono text-xs font-semibold text-primary">{building.code}</p>
         <div className="mt-3 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
           <div>

@@ -11,6 +11,7 @@
 
 ## Project Goal
 
+- 项目定义：文巡智护，文物建筑智能巡查与保护整改智能体。
 - 项目目标：为文物建筑巡查人员提供智能规划、风险识别、规范引用、整改闭环和档案报告能力。
 - 当前阶段：基础设施和最小可运行闭环。
 - 非目标：自动结构鉴定、自动修复方案、IoT、三维扫描、多智能体、真实敏感数据。
@@ -31,6 +32,7 @@
 - 开发：`npm run dev`
 - Lint：`npm run lint`
 - 类型检查：`npm run typecheck`
+- UI 契约检查：`npm run ui:check`
 - 单元测试：`npm test`
 - 数据库集成测试：`npm run test:integration`
 - 构建：`npm run build`

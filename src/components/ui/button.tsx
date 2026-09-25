@@ -4,16 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-[var(--radius-control)] px-4 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:text-text-disabled disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-[#18594f] active:bg-[#12483f]",
-        secondary: "border border-border bg-white text-foreground hover:bg-muted",
-        ghost: "text-foreground hover:bg-muted",
-        danger: "bg-danger text-white hover:bg-[#9f3222]",
-        accent: "bg-accent text-white hover:bg-[#8f5c16] active:bg-[#754a10]",
+          "bg-action-primary text-text-inverse hover:bg-action-primary-hover active:bg-action-primary-active",
+        secondary:
+          "border border-border-default bg-surface-panel text-text-primary hover:bg-surface-subtle",
+        ghost: "text-text-primary hover:bg-surface-subtle",
+        danger: "bg-action-danger text-text-inverse hover:bg-action-danger-hover",
+        accent: "bg-action-warning text-text-inverse hover:bg-action-warning-hover",
       },
       size: {
         default: "h-11",

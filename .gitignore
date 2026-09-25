@@ -30,6 +30,7 @@ prisma/dev.db-journal
 .idea/
 .vscode/
 .playwright-cli/
+design/references/*.png
 .vercel/
 .netlify/
 .wrangler/

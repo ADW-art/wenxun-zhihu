@@ -1,36 +1,5 @@
 @import "tailwindcss";
-
-:root {
-  --background: #f4f7f5;
-  --foreground: #1f2a26;
-  --card: #ffffff;
-  --card-foreground: #1f2a26;
-  --muted: #e8efec;
-  --muted-foreground: #5a6963;
-  --border: #d8e1dd;
-  --primary: #1f6f62;
-  --primary-foreground: #ffffff;
-  --accent: #a96f1f;
-  --danger: #c2412d;
-  --ring: #1f6f62;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-accent: var(--accent);
-  --color-danger: var(--danger);
-  --color-ring: var(--ring);
-  --font-sans: "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
-  --font-mono: "IBM Plex Mono", "Cascadia Mono", Consolas, monospace;
-}
+@import "./tokens.css";
 
 * {
   border-color: var(--border);

@@ -9,16 +9,16 @@ export default async function LoginPage() {
 
   return (
     <main className="grid min-h-screen lg:grid-cols-[1.1fr_0.9fr]">
-      <section className="relative hidden overflow-hidden border-r border-border bg-[#e8efec] p-12 lg:flex lg:flex-col lg:justify-between">
+      <section className="relative hidden overflow-hidden border-r border-border-default bg-surface-subtle p-12 lg:flex lg:flex-col lg:justify-between">
         <div>
           <div className="flex items-center gap-3">
-            <span className="grid size-12 place-items-center rounded-md bg-primary text-white">
+            <span className="grid size-12 place-items-center rounded-md bg-primary text-text-inverse">
               <ShieldCheck className="size-6" aria-hidden="true" />
             </span>
             <div>
               <p className="text-xl font-bold">文巡智护</p>
               <p className="text-sm text-muted-foreground">
-                文物建筑智能巡查与保护整改
+                文物建筑智能巡查与保护整改智能体
               </p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default async function LoginPage() {
           ].map(([value, label]) => (
             <div
               key={label}
-              className="rounded-lg border border-white/80 bg-white/70 p-4 backdrop-blur"
+              className="rounded-lg border border-surface-panel/80 bg-surface-panel/70 p-4 backdrop-blur"
             >
               <p className="font-mono text-2xl font-bold text-primary">{value}</p>
               <p className="mt-1 text-xs text-muted-foreground">{label}</p>

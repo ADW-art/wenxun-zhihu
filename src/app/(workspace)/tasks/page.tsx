@@ -44,7 +44,7 @@ export default async function TasksPage() {
         </p>
       </header>
 
-      <div className="overflow-hidden rounded-lg border border-border bg-white">
+      <div className="overflow-hidden rounded-lg border border-border bg-surface-panel">
         {tasks.length === 0 ? (
           <div className="grid min-h-72 place-items-center p-8 text-center">
             <div>

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     default: "文巡智护",
     template: "%s | 文巡智护",
   },
-  description: "文物建筑智能巡查与保护整改系统",
+  description: "文物建筑智能巡查与保护整改智能体",
 };
 
 export default function RootLayout({

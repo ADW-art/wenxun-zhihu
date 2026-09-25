@@ -91,18 +91,18 @@ export default async function TaskDetailPage({
       </div>
 
       {query.error ? (
-        <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+        <p className="rounded-md border border-status-danger-border bg-status-danger-surface px-4 py-3 text-sm text-status-danger-foreground">
           {decodeURIComponent(query.error)}
         </p>
       ) : null}
       {query.submitted || query.reviewed ? (
-        <p className="flex items-center gap-2 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+        <p className="flex items-center gap-2 rounded-md border border-status-success-border bg-status-success-surface px-4 py-3 text-sm text-status-success-foreground">
           <CheckCircle2 className="size-4" aria-hidden="true" />
           {query.reviewed ? "复核结果已保存" : "整改证据已提交"}
         </p>
       ) : null}
 
-      <header className="rounded-lg border border-border bg-white p-6">
+      <header className="rounded-lg border border-border bg-surface-panel p-6">
         <div className="flex flex-wrap items-center gap-3">
           <StatusBadge status={task.status} />
           <RiskBadge severity={task.priority} />
@@ -198,7 +198,7 @@ export default async function TaskDetailPage({
                       name="file"
                       type="file"
                       accept="image/jpeg,image/png,image/webp,application/pdf,text/plain"
-                      className="block min-h-11 w-full cursor-pointer rounded-md border border-border bg-white px-3 py-2 text-sm file:mr-3 file:rounded file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-sm file:font-semibold"
+                      className="block min-h-11 w-full cursor-pointer rounded-md border border-border bg-surface-panel px-3 py-2 text-sm file:mr-3 file:rounded file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-sm file:font-semibold"
                     />
                     <span className="mt-2 block text-xs text-muted-foreground">
                       最大 8 MB。图片会自动转为 WebP 并移除 EXIF。
@@ -220,10 +220,12 @@ export default async function TaskDetailPage({
           </Card>
 
           {canReview ? (
-            <Card className="border-amber-200 bg-amber-50/50">
+            <Card className="border-status-warning-border bg-status-warning-surface/50">
               <CardHeader>
-                <h2 className="text-lg font-bold text-amber-950">人工复核</h2>
-                <p className="mt-1 text-sm text-amber-900/75">
+                <h2 className="text-lg font-bold text-status-warning-foreground">
+                  人工复核
+                </h2>
+                <p className="mt-1 text-sm text-status-warning-foreground/75">
                   通过后任务关闭；驳回后责任人需要重新提交。
                 </p>
               </CardHeader>

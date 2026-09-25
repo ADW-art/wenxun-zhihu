@@ -1,6 +1,6 @@
 # 文巡智护
 
-面向文物建筑的智能巡查与保护整改系统。系统把巡查计划、风险识别、规范引用、整改任务、证据复核和报告归档连接为一个可追踪闭环。
+文巡智护是面向文物建筑的智能巡查与保护整改智能体。它以 Web 工作台为主要交互形态，把巡查计划、风险识别、规范引用、整改任务、证据复核和报告归档连接为一个可追踪闭环。
 
 ## 当前阶段
 
@@ -67,6 +67,7 @@ npm run mcp:inspect
 npm run format:check
 npm run lint
 npm run typecheck
+npm run ui:check
 npm test
 npm run build
 ```
@@ -100,6 +101,10 @@ npm run test:integration
 - [RAG 规格](docs/RAG_SPEC.md)
 - [评测计划](docs/EVAL_PLAN.md)
 - [UI 设计需求](docs/UI_DESIGN_BRIEF.md)
+- [UI 产品档案](docs/ui/UI_PROJECT_PROFILE.md)
+- [UI 设计系统](docs/ui/UI_DESIGN_SYSTEM.md)
+- [UI 决策与 QA](docs/ui/UI_DECISIONS_AND_QA.md)
+- [AI UI 下一会话交接](AI_UI_NEXT_SESSION_HANDOFF.md)
 - [MCP 服务说明](docs/MCP.md)
 
 ## 安全

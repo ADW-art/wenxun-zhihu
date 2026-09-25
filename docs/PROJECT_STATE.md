@@ -1,12 +1,13 @@
 # Project State
 
-- 最后更新时间：2026-09-24
-- 最后稳定提交：`9d39da5` `feat: verify deepseek flash integration`
-- 当前里程碑：DeepSeek Flash Provider 与 MCP 只读工具已实现并验证
-- 当前活动规格或分支：`deepseek-mcp-integration` / `main`
-- 已完成功能：基础设施、认证、Prisma 模型、Web API、巡查基础闭环、文件证据、报告导出、DeepSeek 适配层和 MCP stdio 服务
-- 正在进行：等待正式 UI 设计稿
-- 已知问题：无影响基础功能开发的阻塞项
-- 阻塞决策：UI 设计稿尚未交付
-- 最近验证结果：格式、Lint、类型检查、18 项测试、生产构建、真实 DeepSeek Flash 调用、文件上传、报告下载和 MCP 协议测试通过
-- 下一步：归档 DeepSeek/MCP 变更并切换为同学提供的 UI
+- 最后更新时间：2026-09-25
+- 项目定义：文巡智护，文物建筑智能巡查与保护整改智能体
+- 最后稳定提交：`fa72c60` `fix: handle missing inspections and agent feedback`（已与 GitHub `origin/main` 对齐）
+- 当前里程碑：参考图视觉方向已扩展为完整主流程设计；风险地图已换成古朴宣纸地形重绘底图，6 个桌面页面的品牌边栏、目录和山水暗纹已完成一致性收口，尚未实装到 Next.js
+- 当前活动规格或分支：`ui-design-foundation` / `main`
+- 已完成功能：基础设施、认证、Prisma 模型、Web API、巡查基础闭环、文件证据、报告导出、DeepSeek 适配层、MCP stdio 服务、UI 基础设计系统、Figma 引导清单、9 个标准页面和 61 个 Variables；Figma 已覆盖风险地图、巡查总览、巡查详情与证据工作台、风险复核与创建整改任务、整改证据复核、归档报告，以及移动巡查采集和提交确认
+- 正在进行：等待用户评审完整主流程设计；本轮不进行 Next.js 页面实装和代码 Token 同步
+- 已知问题：Figma 页面已使用深墨绿、宣纸色、朱红状态色和参考图演示素材，但代码 Token 和 `ui-foundation.manifest.json` 仍是上一版氧化铜绿配色；演示照片不是正式病害证据
+- 阻塞决策：无阻塞性产品决策；正式照片来源、目标用户走查和设计—代码 Token 同步仍需在实装前确认
+- 最近验证结果：8 个 Figma 核心页面重新导出并完成风格一致性审计；桌面边栏统一为 192px、相同品牌区、7 项导航和页脚暗纹，未发现错位、串层、文字重叠或内容溢出；GitHub `origin/main` 与本地 `HEAD` 同为 `fa72c60`，当前工作区仍有未提交的设计和文档变更
+- 下一步：由用户评审主流程设计；确认后再决定是否统一 Token、组件化并实装，未经确认不直接修改现有页面

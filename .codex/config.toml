@@ -16,3 +16,9 @@ startup_timeout_sec = 20
 tool_timeout_sec = 120
 default_tools_approval_mode = "prompt"
 
+[mcp_servers.figwright]
+command = "node"
+args = ["D:/nodejs/node_global/node_modules/@figwright/mcp/dist/index.mjs"]
+startup_timeout_sec = 30
+tool_timeout_sec = 120
+default_tools_approval_mode = "prompt"

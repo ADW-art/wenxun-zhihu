@@ -2,6 +2,8 @@
 
 最后更新：2026-09-24
 
+> 产品角色、业务边界和当前设备基准见 [docs/ui/UI_PROJECT_PROFILE.md](ui/UI_PROJECT_PROFILE.md)。本文件保留流程摘要，不另建冲突的角色或设备事实。
+
 ## 1. 信息架构
 
 ```text

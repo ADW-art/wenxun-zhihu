@@ -61,21 +61,21 @@ export default async function DashboardPage() {
       value: openInspectionCount,
       detail: "含分析和复核",
       icon: ClipboardCheck,
-      tone: "text-sky-700",
+      tone: "text-status-info",
     },
     {
       label: "待确认风险",
       value: pendingReviewCount,
       detail: "需专业人员复核",
       icon: AlertTriangle,
-      tone: "text-amber-700",
+      tone: "text-status-warning",
     },
     {
       label: "进行中整改",
       value: openTaskCount,
       detail: "含待复核任务",
       icon: Route,
-      tone: "text-orange-700",
+      tone: "text-risk-high",
     },
   ];
 
@@ -144,7 +144,7 @@ export default async function DashboardPage() {
                 <Link
                   key={inspection.id}
                   href={`/inspections/${inspection.id}`}
-                  className="group flex flex-col gap-3 rounded-md border border-border bg-white p-4 transition-colors hover:border-primary/40 hover:bg-muted/35 sm:flex-row sm:items-center sm:justify-between"
+                  className="group flex flex-col gap-3 rounded-md border border-border bg-surface-panel p-4 transition-colors hover:border-primary/40 hover:bg-muted/35 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
@@ -182,7 +182,7 @@ export default async function DashboardPage() {
             </p>
           </CardHeader>
           <CardContent>
-            <div className="grid min-h-48 place-items-center rounded-md border border-border bg-[#edf5f2]">
+            <div className="grid min-h-48 place-items-center rounded-md border border-border-default bg-surface-subtle">
               <div className="text-center">
                 <CheckCircle2
                   className="mx-auto size-10 text-primary"

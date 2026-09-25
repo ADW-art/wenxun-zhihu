@@ -1,0 +1,492 @@
+{
+  "version": 1,
+  "project": "wenxun-zhihu",
+  "mode": "create-or-extend-after-authorization",
+  "pages": [
+    "00 Cover & Status",
+    "01 Research & Flows",
+    "02 Wireframes",
+    "03 Foundations",
+    "04 Components & Patterns",
+    "05 Desktop Screens",
+    "06 Mobile Screens",
+    "07 Prototype",
+    "08 Handoff & Archive"
+  ],
+  "variableCollections": [
+    {
+      "name": "Semantic/Color",
+      "variables": [
+        {
+          "figmaName": "color/surface/page",
+          "cssVariable": "--semantic-color-surface-page",
+          "type": "COLOR",
+          "value": "#f4f7f5"
+        },
+        {
+          "figmaName": "color/surface/panel",
+          "cssVariable": "--semantic-color-surface-panel",
+          "type": "COLOR",
+          "value": "#ffffff"
+        },
+        {
+          "figmaName": "color/surface/subtle",
+          "cssVariable": "--semantic-color-surface-subtle",
+          "type": "COLOR",
+          "value": "#e8efec"
+        },
+        {
+          "figmaName": "color/text/primary",
+          "cssVariable": "--semantic-color-text-primary",
+          "type": "COLOR",
+          "value": "#1f2a26"
+        },
+        {
+          "figmaName": "color/text/secondary",
+          "cssVariable": "--semantic-color-text-secondary",
+          "type": "COLOR",
+          "value": "#5a6963"
+        },
+        {
+          "figmaName": "color/text/disabled",
+          "cssVariable": "--semantic-color-text-disabled",
+          "type": "COLOR",
+          "value": "#7c8b85"
+        },
+        {
+          "figmaName": "color/text/inverse",
+          "cssVariable": "--semantic-color-text-inverse",
+          "type": "COLOR",
+          "value": "#ffffff"
+        },
+        {
+          "figmaName": "color/border/default",
+          "cssVariable": "--semantic-color-border-default",
+          "type": "COLOR",
+          "value": "#d8e1dd"
+        },
+        {
+          "figmaName": "color/border/strong",
+          "cssVariable": "--semantic-color-border-strong",
+          "type": "COLOR",
+          "value": "#7c8b85"
+        },
+        {
+          "figmaName": "color/action/primary",
+          "cssVariable": "--semantic-color-action-primary",
+          "type": "COLOR",
+          "value": "#1f6f62"
+        },
+        {
+          "figmaName": "color/action/primary-hover",
+          "cssVariable": "--semantic-color-action-primary-hover",
+          "type": "COLOR",
+          "value": "#18594f"
+        },
+        {
+          "figmaName": "color/action/primary-active",
+          "cssVariable": "--semantic-color-action-primary-active",
+          "type": "COLOR",
+          "value": "#12483f"
+        },
+        {
+          "figmaName": "color/action/danger",
+          "cssVariable": "--semantic-color-action-danger",
+          "type": "COLOR",
+          "value": "#c2412d"
+        },
+        {
+          "figmaName": "color/action/danger-hover",
+          "cssVariable": "--semantic-color-action-danger-hover",
+          "type": "COLOR",
+          "value": "#9f3222"
+        },
+        {
+          "figmaName": "color/action/warning",
+          "cssVariable": "--semantic-color-action-warning",
+          "type": "COLOR",
+          "value": "#a96f1f"
+        },
+        {
+          "figmaName": "color/action/warning-hover",
+          "cssVariable": "--semantic-color-action-warning-hover",
+          "type": "COLOR",
+          "value": "#8f5c16"
+        },
+        {
+          "figmaName": "color/action/focus-ring",
+          "cssVariable": "--semantic-color-focus-ring",
+          "type": "COLOR",
+          "value": "#1f6f62"
+        },
+        {
+          "figmaName": "color/status/success",
+          "cssVariable": "--semantic-color-status-success",
+          "type": "COLOR",
+          "value": "#2f7d68"
+        },
+        {
+          "figmaName": "color/status/success-surface",
+          "cssVariable": "--semantic-color-status-success-surface",
+          "type": "COLOR",
+          "value": "#ecf5f1"
+        },
+        {
+          "figmaName": "color/status/success-border",
+          "cssVariable": "--semantic-color-status-success-border",
+          "type": "COLOR",
+          "value": "#b9d9ce"
+        },
+        {
+          "figmaName": "color/status/success-foreground",
+          "cssVariable": "--semantic-color-status-success-foreground",
+          "type": "COLOR",
+          "value": "#12483f"
+        },
+        {
+          "figmaName": "color/status/warning",
+          "cssVariable": "--semantic-color-status-warning",
+          "type": "COLOR",
+          "value": "#a96f1f"
+        },
+        {
+          "figmaName": "color/status/warning-surface",
+          "cssVariable": "--semantic-color-status-warning-surface",
+          "type": "COLOR",
+          "value": "#fbf6ec"
+        },
+        {
+          "figmaName": "color/status/warning-border",
+          "cssVariable": "--semantic-color-status-warning-border",
+          "type": "COLOR",
+          "value": "#e8d1a9"
+        },
+        {
+          "figmaName": "color/status/warning-foreground",
+          "cssVariable": "--semantic-color-status-warning-foreground",
+          "type": "COLOR",
+          "value": "#754a10"
+        },
+        {
+          "figmaName": "color/status/info",
+          "cssVariable": "--semantic-color-status-info",
+          "type": "COLOR",
+          "value": "#2f6591"
+        },
+        {
+          "figmaName": "color/status/info-surface",
+          "cssVariable": "--semantic-color-status-info-surface",
+          "type": "COLOR",
+          "value": "#eef4f9"
+        },
+        {
+          "figmaName": "color/status/info-border",
+          "cssVariable": "--semantic-color-status-info-border",
+          "type": "COLOR",
+          "value": "#c1d7e8"
+        },
+        {
+          "figmaName": "color/status/info-foreground",
+          "cssVariable": "--semantic-color-status-info-foreground",
+          "type": "COLOR",
+          "value": "#28587e"
+        },
+        {
+          "figmaName": "color/status/danger",
+          "cssVariable": "--semantic-color-status-danger",
+          "type": "COLOR",
+          "value": "#c2412d"
+        },
+        {
+          "figmaName": "color/status/danger-surface",
+          "cssVariable": "--semantic-color-status-danger-surface",
+          "type": "COLOR",
+          "value": "#fbefed"
+        },
+        {
+          "figmaName": "color/status/danger-border",
+          "cssVariable": "--semantic-color-status-danger-border",
+          "type": "COLOR",
+          "value": "#ecc0b8"
+        },
+        {
+          "figmaName": "color/status/danger-foreground",
+          "cssVariable": "--semantic-color-status-danger-foreground",
+          "type": "COLOR",
+          "value": "#8c2a1d"
+        },
+        {
+          "figmaName": "color/risk/low",
+          "cssVariable": "--semantic-color-risk-low",
+          "type": "COLOR",
+          "value": "#2f7d68"
+        },
+        {
+          "figmaName": "color/risk/low-surface",
+          "cssVariable": "--semantic-color-risk-low-surface",
+          "type": "COLOR",
+          "value": "#ecf5f1"
+        },
+        {
+          "figmaName": "color/risk/low-border",
+          "cssVariable": "--semantic-color-risk-low-border",
+          "type": "COLOR",
+          "value": "#b9d9ce"
+        },
+        {
+          "figmaName": "color/risk/low-foreground",
+          "cssVariable": "--semantic-color-risk-low-foreground",
+          "type": "COLOR",
+          "value": "#12483f"
+        },
+        {
+          "figmaName": "color/risk/medium",
+          "cssVariable": "--semantic-color-risk-medium",
+          "type": "COLOR",
+          "value": "#a96f1f"
+        },
+        {
+          "figmaName": "color/risk/medium-surface",
+          "cssVariable": "--semantic-color-risk-medium-surface",
+          "type": "COLOR",
+          "value": "#fbf6ec"
+        },
+        {
+          "figmaName": "color/risk/medium-border",
+          "cssVariable": "--semantic-color-risk-medium-border",
+          "type": "COLOR",
+          "value": "#e8d1a9"
+        },
+        {
+          "figmaName": "color/risk/medium-foreground",
+          "cssVariable": "--semantic-color-risk-medium-foreground",
+          "type": "COLOR",
+          "value": "#754a10"
+        },
+        {
+          "figmaName": "color/risk/high",
+          "cssVariable": "--semantic-color-risk-high",
+          "type": "COLOR",
+          "value": "#c65d2e"
+        },
+        {
+          "figmaName": "color/risk/high-surface",
+          "cssVariable": "--semantic-color-risk-high-surface",
+          "type": "COLOR",
+          "value": "#fcf3ee"
+        },
+        {
+          "figmaName": "color/risk/high-border",
+          "cssVariable": "--semantic-color-risk-high-border",
+          "type": "COLOR",
+          "value": "#f0c9b7"
+        },
+        {
+          "figmaName": "color/risk/high-foreground",
+          "cssVariable": "--semantic-color-risk-high-foreground",
+          "type": "COLOR",
+          "value": "#9e4923"
+        },
+        {
+          "figmaName": "color/risk/critical",
+          "cssVariable": "--semantic-color-risk-critical",
+          "type": "COLOR",
+          "value": "#c2412d"
+        },
+        {
+          "figmaName": "color/risk/critical-surface",
+          "cssVariable": "--semantic-color-risk-critical-surface",
+          "type": "COLOR",
+          "value": "#fbefed"
+        },
+        {
+          "figmaName": "color/risk/critical-border",
+          "cssVariable": "--semantic-color-risk-critical-border",
+          "type": "COLOR",
+          "value": "#ecc0b8"
+        },
+        {
+          "figmaName": "color/risk/critical-foreground",
+          "cssVariable": "--semantic-color-risk-critical-foreground",
+          "type": "COLOR",
+          "value": "#8c2a1d"
+        }
+      ]
+    },
+    {
+      "name": "Semantic/Space",
+      "variables": [
+        {
+          "figmaName": "space/1",
+          "cssVariable": "--space-1",
+          "type": "FLOAT",
+          "value": "4"
+        },
+        {
+          "figmaName": "space/2",
+          "cssVariable": "--space-2",
+          "type": "FLOAT",
+          "value": "8"
+        },
+        {
+          "figmaName": "space/3",
+          "cssVariable": "--space-3",
+          "type": "FLOAT",
+          "value": "12"
+        },
+        {
+          "figmaName": "space/4",
+          "cssVariable": "--space-4",
+          "type": "FLOAT",
+          "value": "16"
+        },
+        {
+          "figmaName": "space/6",
+          "cssVariable": "--space-6",
+          "type": "FLOAT",
+          "value": "24"
+        },
+        {
+          "figmaName": "space/8",
+          "cssVariable": "--space-8",
+          "type": "FLOAT",
+          "value": "32"
+        },
+        {
+          "figmaName": "space/12",
+          "cssVariable": "--space-12",
+          "type": "FLOAT",
+          "value": "48"
+        }
+      ]
+    },
+    {
+      "name": "Semantic/Radius",
+      "variables": [
+        {
+          "figmaName": "radius/xs",
+          "cssVariable": "--radius-xs",
+          "type": "FLOAT",
+          "value": "4"
+        },
+        {
+          "figmaName": "radius/control",
+          "cssVariable": "--radius-control",
+          "type": "FLOAT",
+          "value": "6"
+        },
+        {
+          "figmaName": "radius/card",
+          "cssVariable": "--radius-card",
+          "type": "FLOAT",
+          "value": "8"
+        },
+        {
+          "figmaName": "radius/pill",
+          "cssVariable": "--radius-pill",
+          "type": "FLOAT",
+          "value": "9999"
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Button",
+      "code": "src/components/ui/button.tsx",
+      "states": ["default", "hover", "active", "focus", "disabled", "loading"],
+      "status": "existing"
+    },
+    {
+      "name": "Input",
+      "code": "src/components/ui/input.tsx",
+      "states": ["default", "focus", "disabled", "error", "read-only"],
+      "status": "existing"
+    },
+    {
+      "name": "Textarea",
+      "code": "src/components/ui/textarea.tsx",
+      "states": ["default", "focus", "disabled", "error", "read-only", "long-text"],
+      "status": "existing"
+    },
+    {
+      "name": "Select",
+      "code": "src/components/ui/select.tsx",
+      "states": ["default", "focus", "disabled", "error"],
+      "status": "existing"
+    },
+    {
+      "name": "Status",
+      "code": "src/components/ui/status-badge.tsx",
+      "states": ["neutral", "info", "warning", "success", "danger"],
+      "status": "existing"
+    },
+    {
+      "name": "RiskBadge",
+      "code": "src/components/ui/risk-badge.tsx",
+      "states": ["low", "medium", "high", "critical"],
+      "status": "existing"
+    },
+    {
+      "name": "EvidenceUpload",
+      "code": null,
+      "states": ["idle", "uploading", "success", "format-error", "too-large", "failed"],
+      "status": "planned"
+    },
+    {
+      "name": "EvidenceViewer",
+      "code": null,
+      "states": ["loading", "loaded", "failed", "marker", "fullscreen"],
+      "status": "planned"
+    },
+    {
+      "name": "ReviewTimeline",
+      "code": null,
+      "states": ["current", "completed", "rejected", "locked"],
+      "status": "planned"
+    },
+    {
+      "name": "InspectionTaskRow",
+      "code": null,
+      "states": ["open", "in-progress", "review", "closed", "rejected", "overdue"],
+      "status": "planned"
+    }
+  ],
+  "screens": [
+    {
+      "name": "Login",
+      "route": "/login",
+      "figmaFrame": "Desktop/Login",
+      "viewports": ["1440x1024", "375x812"],
+      "priority": 1
+    },
+    {
+      "name": "Dashboard",
+      "route": "/dashboard",
+      "figmaFrame": "Desktop/Dashboard",
+      "viewports": ["1440x1024", "375x812"],
+      "priority": 2
+    },
+    {
+      "name": "Inspection Detail",
+      "route": "/inspections/[id]",
+      "figmaFrame": "Desktop/Inspection Detail",
+      "viewports": ["1440x1024", "375x812"],
+      "priority": 3
+    },
+    {
+      "name": "Task Detail",
+      "route": "/tasks/[id]",
+      "figmaFrame": "Desktop/Task Detail",
+      "viewports": ["1440x1024", "375x812"],
+      "priority": 4
+    },
+    {
+      "name": "Report Center",
+      "route": "/reports",
+      "figmaFrame": "Desktop/Report Center",
+      "viewports": ["1440x1024"],
+      "priority": 5
+    }
+  ]
+}

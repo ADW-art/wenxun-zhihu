@@ -1,0 +1,206 @@
+:root {
+  /* Primitive color */
+  --primitive-white: #ffffff;
+  --primitive-neutral-50: #f4f7f5;
+  --primitive-neutral-100: #e8efec;
+  --primitive-neutral-200: #d8e1dd;
+  --primitive-neutral-500: #7c8b85;
+  --primitive-neutral-600: #5a6963;
+  --primitive-neutral-800: #26332e;
+  --primitive-neutral-900: #1f2a26;
+  --primitive-green-50: #ecf5f1;
+  --primitive-green-200: #b9d9ce;
+  --primitive-green-600: #2f7d68;
+  --primitive-green-700: #1f6f62;
+  --primitive-green-800: #18594f;
+  --primitive-green-900: #12483f;
+  --primitive-amber-50: #fbf6ec;
+  --primitive-amber-200: #e8d1a9;
+  --primitive-amber-600: #a96f1f;
+  --primitive-amber-700: #8f5c16;
+  --primitive-amber-800: #754a10;
+  --primitive-orange-50: #fcf3ee;
+  --primitive-orange-200: #f0c9b7;
+  --primitive-orange-600: #c65d2e;
+  --primitive-orange-700: #9e4923;
+  --primitive-red-50: #fbefed;
+  --primitive-red-200: #ecc0b8;
+  --primitive-red-600: #c2412d;
+  --primitive-red-700: #9f3222;
+  --primitive-red-800: #8c2a1d;
+  --primitive-blue-50: #eef4f9;
+  --primitive-blue-200: #c1d7e8;
+  --primitive-blue-600: #2f6591;
+  --primitive-blue-700: #28587e;
+
+  /* Primitive spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+
+  /* Primitive radius */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-pill: 9999px;
+  --radius-control: var(--radius-sm);
+  --radius-card: var(--radius-md);
+
+  /* Primitive typography */
+  --font-family-sans:
+    "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+  --font-family-mono: "IBM Plex Mono", "Cascadia Mono", Consolas, monospace;
+
+  /* Semantic color */
+  --semantic-color-surface-page: var(--primitive-neutral-50);
+  --semantic-color-surface-panel: var(--primitive-white);
+  --semantic-color-surface-subtle: var(--primitive-neutral-100);
+  --semantic-color-text-primary: var(--primitive-neutral-900);
+  --semantic-color-text-secondary: var(--primitive-neutral-600);
+  --semantic-color-text-disabled: var(--primitive-neutral-500);
+  --semantic-color-text-inverse: var(--primitive-white);
+  --semantic-color-border-default: var(--primitive-neutral-200);
+  --semantic-color-border-strong: var(--primitive-neutral-500);
+  --semantic-color-action-primary: var(--primitive-green-700);
+  --semantic-color-action-primary-hover: var(--primitive-green-800);
+  --semantic-color-action-primary-active: var(--primitive-green-900);
+  --semantic-color-action-danger: var(--primitive-red-600);
+  --semantic-color-action-danger-hover: var(--primitive-red-700);
+  --semantic-color-action-warning: var(--primitive-amber-600);
+  --semantic-color-action-warning-hover: var(--primitive-amber-700);
+  --semantic-color-focus-ring: var(--primitive-green-700);
+
+  --semantic-color-status-success: var(--primitive-green-600);
+  --semantic-color-status-success-surface: var(--primitive-green-50);
+  --semantic-color-status-success-border: var(--primitive-green-200);
+  --semantic-color-status-success-foreground: var(--primitive-green-900);
+  --semantic-color-status-warning: var(--primitive-amber-600);
+  --semantic-color-status-warning-surface: var(--primitive-amber-50);
+  --semantic-color-status-warning-border: var(--primitive-amber-200);
+  --semantic-color-status-warning-foreground: var(--primitive-amber-800);
+  --semantic-color-status-info: var(--primitive-blue-600);
+  --semantic-color-status-info-surface: var(--primitive-blue-50);
+  --semantic-color-status-info-border: var(--primitive-blue-200);
+  --semantic-color-status-info-foreground: var(--primitive-blue-700);
+  --semantic-color-status-danger: var(--primitive-red-600);
+  --semantic-color-status-danger-surface: var(--primitive-red-50);
+  --semantic-color-status-danger-border: var(--primitive-red-200);
+  --semantic-color-status-danger-foreground: var(--primitive-red-800);
+
+  --semantic-color-risk-low: var(--primitive-green-600);
+  --semantic-color-risk-low-surface: var(--primitive-green-50);
+  --semantic-color-risk-low-border: var(--primitive-green-200);
+  --semantic-color-risk-low-foreground: var(--primitive-green-900);
+  --semantic-color-risk-medium: var(--primitive-amber-600);
+  --semantic-color-risk-medium-surface: var(--primitive-amber-50);
+  --semantic-color-risk-medium-border: var(--primitive-amber-200);
+  --semantic-color-risk-medium-foreground: var(--primitive-amber-800);
+  --semantic-color-risk-high: var(--primitive-orange-600);
+  --semantic-color-risk-high-surface: var(--primitive-orange-50);
+  --semantic-color-risk-high-border: var(--primitive-orange-200);
+  --semantic-color-risk-high-foreground: var(--primitive-orange-700);
+  --semantic-color-risk-critical: var(--primitive-red-600);
+  --semantic-color-risk-critical-surface: var(--primitive-red-50);
+  --semantic-color-risk-critical-border: var(--primitive-red-200);
+  --semantic-color-risk-critical-foreground: var(--primitive-red-800);
+
+  /* Overlay-only elevation */
+  --shadow-elevation-1: 0 1px 2px rgb(31 42 38 / 6%);
+  --shadow-overlay: 0 18px 60px rgb(31 42 38 / 14%), 0 2px 8px rgb(31 42 38 / 8%);
+
+  /* Compatibility aliases for the existing UI */
+  --background: var(--semantic-color-surface-page);
+  --foreground: var(--semantic-color-text-primary);
+  --card: var(--semantic-color-surface-panel);
+  --card-foreground: var(--semantic-color-text-primary);
+  --muted: var(--semantic-color-surface-subtle);
+  --muted-foreground: var(--semantic-color-text-secondary);
+  --border: var(--semantic-color-border-default);
+  --primary: var(--semantic-color-action-primary);
+  --primary-foreground: var(--semantic-color-text-inverse);
+  --accent: var(--semantic-color-action-warning);
+  --danger: var(--semantic-color-action-danger);
+  --ring: var(--semantic-color-focus-ring);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --color-ring: var(--ring);
+
+  --color-surface-page: var(--semantic-color-surface-page);
+  --color-surface-panel: var(--semantic-color-surface-panel);
+  --color-surface-subtle: var(--semantic-color-surface-subtle);
+  --color-text-primary: var(--semantic-color-text-primary);
+  --color-text-secondary: var(--semantic-color-text-secondary);
+  --color-text-disabled: var(--semantic-color-text-disabled);
+  --color-text-inverse: var(--semantic-color-text-inverse);
+  --color-border-default: var(--semantic-color-border-default);
+  --color-border-strong: var(--semantic-color-border-strong);
+  --color-action-primary: var(--semantic-color-action-primary);
+  --color-action-primary-hover: var(--semantic-color-action-primary-hover);
+  --color-action-primary-active: var(--semantic-color-action-primary-active);
+  --color-action-danger: var(--semantic-color-action-danger);
+  --color-action-danger-hover: var(--semantic-color-action-danger-hover);
+  --color-action-warning: var(--semantic-color-action-warning);
+  --color-action-warning-hover: var(--semantic-color-action-warning-hover);
+  --color-focus-ring: var(--semantic-color-focus-ring);
+
+  --color-status-success: var(--semantic-color-status-success);
+  --color-status-success-surface: var(--semantic-color-status-success-surface);
+  --color-status-success-border: var(--semantic-color-status-success-border);
+  --color-status-success-foreground: var(--semantic-color-status-success-foreground);
+  --color-status-warning: var(--semantic-color-status-warning);
+  --color-status-warning-surface: var(--semantic-color-status-warning-surface);
+  --color-status-warning-border: var(--semantic-color-status-warning-border);
+  --color-status-warning-foreground: var(--semantic-color-status-warning-foreground);
+  --color-status-info: var(--semantic-color-status-info);
+  --color-status-info-surface: var(--semantic-color-status-info-surface);
+  --color-status-info-border: var(--semantic-color-status-info-border);
+  --color-status-info-foreground: var(--semantic-color-status-info-foreground);
+  --color-status-danger: var(--semantic-color-status-danger);
+  --color-status-danger-surface: var(--semantic-color-status-danger-surface);
+  --color-status-danger-border: var(--semantic-color-status-danger-border);
+  --color-status-danger-foreground: var(--semantic-color-status-danger-foreground);
+
+  --color-risk-low: var(--semantic-color-risk-low);
+  --color-risk-low-surface: var(--semantic-color-risk-low-surface);
+  --color-risk-low-border: var(--semantic-color-risk-low-border);
+  --color-risk-low-foreground: var(--semantic-color-risk-low-foreground);
+  --color-risk-medium: var(--semantic-color-risk-medium);
+  --color-risk-medium-surface: var(--semantic-color-risk-medium-surface);
+  --color-risk-medium-border: var(--semantic-color-risk-medium-border);
+  --color-risk-medium-foreground: var(--semantic-color-risk-medium-foreground);
+  --color-risk-high: var(--semantic-color-risk-high);
+  --color-risk-high-surface: var(--semantic-color-risk-high-surface);
+  --color-risk-high-border: var(--semantic-color-risk-high-border);
+  --color-risk-high-foreground: var(--semantic-color-risk-high-foreground);
+  --color-risk-critical: var(--semantic-color-risk-critical);
+  --color-risk-critical-surface: var(--semantic-color-risk-critical-surface);
+  --color-risk-critical-border: var(--semantic-color-risk-critical-border);
+  --color-risk-critical-foreground: var(--semantic-color-risk-critical-foreground);
+
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+  --spacing-12: var(--space-12);
+}

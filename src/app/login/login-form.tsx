@@ -35,10 +35,10 @@ export function LoginForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-lg border border-border bg-white p-6 shadow-[0_18px_60px_rgb(31_42_38/10%)]"
+      className="rounded-lg border border-border bg-surface-panel p-6 shadow-overlay"
     >
       <div className="mb-6 flex items-center gap-3">
-        <span className="grid size-11 place-items-center rounded-md bg-primary text-white">
+        <span className="grid size-11 place-items-center rounded-md bg-primary text-text-inverse">
           <LockKeyhole className="size-5" aria-hidden="true" />
         </span>
         <div>
@@ -76,7 +76,7 @@ export function LoginForm() {
       {error ? (
         <p
           role="alert"
-          className="mt-4 flex items-center gap-2 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800"
+          className="mt-4 flex items-center gap-2 rounded-md border border-status-danger-border bg-status-danger-surface px-3 py-2 text-sm text-status-danger-foreground"
         >
           <AlertCircle className="size-4" aria-hidden="true" />
           {error}

@@ -28,20 +28,22 @@ export const severityLabels: Record<RiskSeverity, string> = {
 
 export const severityTone: Record<RiskSeverity, { badge: string; dot: string }> = {
   LOW: {
-    badge: "border-emerald-200 bg-emerald-50 text-emerald-800",
-    dot: "bg-emerald-600",
+    badge: "border-risk-low-border bg-risk-low-surface text-risk-low-foreground",
+    dot: "bg-risk-low",
   },
   MEDIUM: {
-    badge: "border-amber-200 bg-amber-50 text-amber-800",
-    dot: "bg-amber-600",
+    badge:
+      "border-risk-medium-border bg-risk-medium-surface text-risk-medium-foreground",
+    dot: "bg-risk-medium",
   },
   HIGH: {
-    badge: "border-orange-200 bg-orange-50 text-orange-800",
-    dot: "bg-orange-600",
+    badge: "border-risk-high-border bg-risk-high-surface text-risk-high-foreground",
+    dot: "bg-risk-high",
   },
   CRITICAL: {
-    badge: "border-red-200 bg-red-50 text-red-800",
-    dot: "bg-red-600",
+    badge:
+      "border-risk-critical-border bg-risk-critical-surface text-risk-critical-foreground",
+    dot: "bg-risk-critical",
   },
 };
 

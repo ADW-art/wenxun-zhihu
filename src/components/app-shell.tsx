@@ -39,18 +39,18 @@ export function AppShell({
 }) {
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-[248px_1fr]">
-      <aside className="border-b border-border bg-[#f8faf9]/95 px-4 py-5 backdrop-blur lg:sticky lg:top-0 lg:h-screen lg:border-r lg:border-b-0">
+      <aside className="border-b border-border-default bg-surface-panel/95 px-4 py-5 backdrop-blur lg:sticky lg:top-0 lg:h-screen lg:border-r lg:border-b-0">
         <Link
           href="/dashboard"
           className="flex items-center gap-3 rounded-md px-2 py-2 focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <span className="grid size-10 place-items-center rounded-md bg-primary text-white">
+          <span className="grid size-10 place-items-center rounded-md bg-primary text-text-inverse">
             <ShieldCheck className="size-5" aria-hidden="true" />
           </span>
           <span>
             <span className="block text-base font-bold tracking-normal">文巡智护</span>
             <span className="block text-xs text-muted-foreground">
-              文物建筑智能巡查
+              不可移动文物巡查智能体
             </span>
           </span>
         </Link>
@@ -77,7 +77,7 @@ export function AppShell({
         </nav>
 
         <div className="mt-6 border-t border-border pt-5 lg:absolute lg:right-4 lg:bottom-5 lg:left-4">
-          <div className="rounded-md border border-border bg-white p-3">
+          <div className="rounded-md border border-border bg-surface-panel p-3">
             <p className="truncate text-sm font-semibold">
               {user.name ?? "未命名用户"}
             </p>

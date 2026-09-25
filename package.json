@@ -15,6 +15,7 @@
     "test:watch": "vitest",
     "test:integration": "cross-env RUN_INTEGRATION_TESTS=1 vitest run src/lib/services/inspection-service.integration.test.ts",
     "ai:smoke": "tsx scripts/deepseek-smoke.ts",
+    "ui:check": "tsx scripts/check-ui-foundation.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "db:generate": "prisma generate",

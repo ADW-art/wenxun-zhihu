@@ -32,7 +32,7 @@ export default async function BuildingsPage() {
       <section className="grid gap-5 lg:grid-cols-2 2xl:grid-cols-3">
         {buildings.map((building) => (
           <Card key={building.id} className="overflow-hidden">
-            <div className="relative h-28 overflow-hidden border-b border-border bg-[#e7efec]">
+            <div className="relative h-28 overflow-hidden border-b border-border-default bg-surface-subtle">
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(31_111_98/12%)_1px,transparent_1px),linear-gradient(rgb(31_111_98/12%)_1px,transparent_1px)] bg-[size:24px_24px]" />
               <Building2
                 className="absolute right-5 bottom-5 size-14 text-primary/35"

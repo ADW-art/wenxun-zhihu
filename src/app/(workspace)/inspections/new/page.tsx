@@ -112,7 +112,7 @@ export default async function NewInspectionPage({
               {query.error ? (
                 <p
                   role="alert"
-                  className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800"
+                  className="rounded-md border border-status-danger-border bg-status-danger-surface px-3 py-2 text-sm text-status-danger-foreground"
                 >
                   {decodeURIComponent(query.error)}
                 </p>
@@ -142,11 +142,13 @@ export default async function NewInspectionPage({
             </CardContent>
           </Card>
 
-          <Card className="border-amber-200 bg-amber-50/60">
+          <Card className="border-status-warning-border bg-status-warning-surface/60">
             <CardContent>
-              <ShieldAlert className="size-7 text-amber-700" aria-hidden="true" />
-              <h2 className="mt-4 font-bold text-amber-900">人工边界</h2>
-              <p className="mt-2 text-sm leading-6 text-amber-900/80">
+              <ShieldAlert className="size-7 text-status-warning" aria-hidden="true" />
+              <h2 className="mt-4 font-bold text-status-warning-foreground">
+                人工边界
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-status-warning-foreground/80">
                 系统不会作出结构安全鉴定，也不会自动批准修复方案。所有风险、整改和归档均需专业人员确认。
               </p>
             </CardContent>

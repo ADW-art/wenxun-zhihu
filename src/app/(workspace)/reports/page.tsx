@@ -30,7 +30,7 @@ export default async function ReportsPage() {
       </header>
 
       {inspections.length === 0 ? (
-        <div className="grid min-h-72 place-items-center rounded-lg border border-dashed border-border bg-white p-8 text-center">
+        <div className="grid min-h-72 place-items-center rounded-lg border border-dashed border-border bg-surface-panel p-8 text-center">
           <div>
             <FileBarChart
               className="mx-auto size-10 text-muted-foreground"
@@ -43,7 +43,7 @@ export default async function ReportsPage() {
           </div>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-lg border border-border bg-white">
+        <div className="overflow-hidden rounded-lg border border-border bg-surface-panel">
           <div className="divide-y divide-border">
             {inspections.map((inspection) => (
               <div
