@@ -12,8 +12,8 @@ html {
 body {
   min-height: 100vh;
   background:
-    linear-gradient(90deg, rgb(31 111 98 / 4%) 1px, transparent 1px),
-    linear-gradient(rgb(31 111 98 / 4%) 1px, transparent 1px), var(--background);
+    linear-gradient(90deg, rgb(45 71 57 / 3%) 1px, transparent 1px),
+    linear-gradient(rgb(45 71 57 / 3%) 1px, transparent 1px), var(--background);
   background-size: 32px 32px;
   color: var(--foreground);
   font-family: var(--font-sans);
@@ -34,7 +34,7 @@ a {
 }
 
 ::selection {
-  background: rgb(31 111 98 / 18%);
+  background: rgb(45 71 57 / 18%);
 }
 
 @media (prefers-reduced-motion: reduce) {

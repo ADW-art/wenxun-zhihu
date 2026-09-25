@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ClipboardCheck } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { PageHeader } from "@/components/page-header";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { Button } from "@/components/ui/button";
 import { formatDateTime } from "@/lib/utils";
@@ -16,24 +17,20 @@ export default async function InspectionsPage() {
   });
 
   return (
-    <div className="space-y-7">
-      <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-        <div>
-          <p className="font-mono text-xs font-semibold text-primary">
-            INSPECTION REGISTER
-          </p>
-          <h1 className="mt-2 text-3xl font-bold tracking-normal">巡查管理</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            查看巡查状态、智能体分析和人工复核进度。
-          </p>
-        </div>
-        <Button asChild>
-          <Link href="/inspections/new">
-            新建巡查
-            <ArrowRight className="size-4" aria-hidden="true" />
-          </Link>
-        </Button>
-      </header>
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Inspection register"
+        title="巡查任务"
+        description="查看巡查状态、智能体分析和人工复核进度。"
+        actions={
+          <Button asChild>
+            <Link href="/inspections/new">
+              新建巡查
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </Button>
+        }
+      />
 
       <div className="overflow-hidden rounded-lg border border-border bg-surface-panel">
         {inspections.length === 0 ? (

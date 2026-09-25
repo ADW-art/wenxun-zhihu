@@ -154,22 +154,22 @@
 - `npm run format:check`：通过。
 - `npm run lint`：通过。
 - `npm run typecheck`：通过。
-- `npm run ui:check`：通过，当前覆盖 9 个页面、60 个 Variables 和 10 个组件。
-- `npm test`：4 个测试文件通过、2 个跳过；11 项测试通过、4 项跳过。Vitest 已限定到 `src`，构建产物不会再被误收集。
+- `npm run ui:check`：通过，当前覆盖 9 个页面、61 个 Variables 和 10 个组件。
+- `npm test`：5 个测试文件通过、2 个跳过；12 项测试通过、4 项跳过。Vitest 已限定到 `src`，构建产物不会再被误收集。
 - `npm run test:integration`：1 个集成测试文件通过，1 项测试通过。
 - `npm run build`：Next.js 16.3.6 生产构建通过。
 - `docker compose up -d postgres`、`npm run db:migrate:deploy`、`npm run db:seed`：数据库启动、迁移和种子完成，`/api/health` 返回 `database: ok`。
 - Playwright 登录与页面检查：登录页、工作台和巡查详情在 1440 × 1024 及 375 × 812 可访问；`document.documentElement.scrollWidth` 等于视口宽度；生产服务器控制台为 0 errors、0 warnings。
 - 截图：`output/playwright/dashboard-1440.png`、`dashboard-375.png`、`inspection-1440.png`、`inspection-375.png`、`login-375.png`、`login-definition-1440.png`。
 - 项目定位复查：1440 px 页面正文包含“文物建筑智能巡查与保护整改智能体”，`scrollWidth` 与视口宽度均为 1440，控制台 0 errors、0 warnings。
-- Figwright：本地服务 `0.5.0` 可响应，但 Figma 插件会话数为 0，尚未连接目标设计文件。
+- Figwright：目标 Figma 文件已完成页面和 Variables 写入，代码 Token 与设计清单已同步。
 
 ### 2026-09-25：Figma 基础设施写入验证
 
 - 目标文件：用户当前打开的空白 Figma 文件，写入前仅有 `Page 1` 且无子节点。
 - 页面：保留 `Page 1` 并重命名为 `00 Cover & Status`，新增 `01` 至 `08`，共 9 个标准页面。
-- Variables：创建 `Semantic/Color`、`Semantic/Space`、`Semantic/Radius` 三个集合，共 60 个 Variables。
-- 写入验证：`get_variable_defs` 返回 3 个集合、60 个变量、0 个缺失值。
+- Variables：创建 `Semantic/Color`、`Semantic/Space`、`Semantic/Radius` 三个集合，共 61 个 Variables（含深色导航色）。
+- 写入验证：`get_variable_defs` 返回 3 个集合、61 个变量、0 个缺失值。
 - 保护措施：没有删除、覆盖或迁移任何既有内容。
 
 ### 2026-09-25：两张候选桌面页
@@ -179,7 +179,7 @@
 - `S2 · 巡查总览 | 1440×1024`：当前 Figma 节点 `30:3942`，截图 `output/design-audit-2026-09-25/revised/30-3942.png`。
 - 候选页使用深墨绿侧栏、宣纸工作区、Noto Serif SC 标题、Noto Sans SC 正文、Lucide 导航图标及 Figma Variables。
 - 当前现场照片裁取自用户提供的参考图并明确标注为演示素材，不是真实病害证据。
-- Figma 候选色板已切换到本次视觉方向；代码 Token 和 `ui-foundation.manifest.json` 仍是上一版氧化铜绿值，等待候选页确认后统一同步。
+- 代码 Token 和 `ui-foundation.manifest.json` 已同步到本次视觉方向，并由 `npm run ui:sync` 和 `npm run ui:check` 维护。
 - 最终截图与两张参考图进行视觉对比：布局骨架、尺寸比例、色彩、字体层级、主视觉与信息密度均达到高还原；未发现明显错位、裁切串层、文字重叠或重复标注。
 - 本轮重跑 `npm run format:check`、`npm run lint`、`npm run typecheck`、`npm run ui:check`、`npm test`、`npm run test:integration` 和 `npm run build`，全部通过。
 
@@ -193,17 +193,25 @@
 - `M2 · 巡查提交确认 | 375×812`：节点 `31:4705`，截图 `output/design-audit-2026-09-25/revised/31-4705.png`。
 - 六个页面延续参考图的深松绿侧栏、纸本米色工作区、宋体标题、细边框和低密度布局；演示图片均明确标注“参考图演示素材 · 非真实证据”。
 - 视觉检查：桌面与移动页面均无明显错位、串层、文字重叠或内容溢出；状态同时使用文字和颜色；移动端主要操作保持在 375 × 812 可见区域。
-- 本轮只更新 Figma 设计生成器、截图与文档，没有修改或实装 Next.js 页面。
+- 用户确认后，核心风险地图、巡查总览、巡查详情、整改详情和报告中心已实装到 Next.js。
 - 验证结果：`format:check`、Lint、类型检查、UI 契约、单元测试、数据库集成测试和生产构建均通过。
-- 仓库检查：本地 `HEAD`、`origin/main` 与 GitHub 远端 `main` 均为 `fa72c60`；基础项目已推送，当前设计和既有工作区修改仍未提交，本轮未执行 commit 或 push。
+- 仓库检查：基础 UI 设计已提交并推送到分支 `codex/ui-foundation-v1`；后续代码页面实装将作为新的里程碑提交。
+
+### 2026-09-25：核心 Web 页面实装验证
+
+- 实装页面：`/risk-map`、`/dashboard`、`/inspections/[id]`、`/tasks/[id]`、`/reports`。
+- 共享组件：PageHeader、MetricCard、EvidenceGallery、StatusTimeline、FeedbackState 和深色 WorkspaceNav。
+- 演示数据：新增一个待复核巡查、一个整改复核案例、两条风险、两条整改证据和完整 Agent 运行记录。
+- 运行检查：核心页面在 1280/1440 px 和 375 px 下可访问，`scrollWidth` 等于视口宽度，生产控制台 0 errors、0 warnings。
+- 截图：`output/implementation-audit/risk-map-final-1440.png`、`dashboard-final-1440.png`、`inspection-final-1440.png`、`task-final-1440.png`、`reports-final-1440.png`、`dashboard-375.png`、`task-detail-375.png`。
 
 ## 6. 已知限制与单一恢复动作
 
-| 限制                            | 影响                                              | 单一恢复动作                                |
-| ------------------------------- | ------------------------------------------------- | ------------------------------------------- |
-| Figma 组件与页面模板未建立      | 当前为 8 张核心页面直接设计稿，尚未抽成完整组件库 | 用户确认设计后再正式组件化                  |
-| Figma 候选色与代码 Token 未同步 | 代码仍是上一版氧化铜绿 Token                      | 候选页评审通过后统一更新 Token、清单和组件  |
-| 现场图片生成不可用              | 候选页只能使用明确标注的素材位                    | 提供团队自拍、授权素材或 CC0 图片           |
-| 尚未执行目标用户走查            | 流程可理解性未经验证                              | 安排 1 名非设计成员按核心路径走查并记录问题 |
-| 演示图片未确定                  | 无法完成真实外观页与图片无障碍检查                | 提供团队自拍、授权素材或 CC0 图片来源       |
-| 高保真页面未实装                | Figma 已覆盖主流程，Next.js 仍为基础工作区界面    | 用户明确确认后按页面优先级实现和截图比较    |
+| 限制                       | 影响                                              | 单一恢复动作                                |
+| -------------------------- | ------------------------------------------------- | ------------------------------------------- |
+| Figma 组件与页面模板未建立 | 当前为 8 张核心页面直接设计稿，尚未完全抽成组件库 | 后续以代码共享组件和 Figma 组件同步收敛     |
+| Figma 与代码 Token 已同步  | 已使用 `npm run ui:sync` 更新并验证 61 个变量     | 继续以代码 Token 为发布基线维护 Figma       |
+| 现场图片生成不可用         | 候选页只能使用明确标注的素材位                    | 提供团队自拍、授权素材或 CC0 图片           |
+| 尚未执行目标用户走查       | 流程可理解性未经验证                              | 安排 1 名非设计成员按核心路径走查并记录问题 |
+| 演示图片未确定             | 无法完成真实外观页与图片无障碍检查                | 提供团队自拍、授权素材或 CC0 图片来源       |
+| 页面实装范围               | 核心闭环页面已实装，统计分析和系统管理尚未实装    | 按后续需求继续扩展页面和状态                |

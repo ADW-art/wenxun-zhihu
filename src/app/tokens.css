@@ -1,37 +1,38 @@
 :root {
   /* Primitive color */
   --primitive-white: #ffffff;
-  --primitive-neutral-50: #f4f7f5;
-  --primitive-neutral-100: #e8efec;
-  --primitive-neutral-200: #d8e1dd;
-  --primitive-neutral-500: #7c8b85;
-  --primitive-neutral-600: #5a6963;
-  --primitive-neutral-800: #26332e;
-  --primitive-neutral-900: #1f2a26;
-  --primitive-green-50: #ecf5f1;
-  --primitive-green-200: #b9d9ce;
-  --primitive-green-600: #2f7d68;
-  --primitive-green-700: #1f6f62;
-  --primitive-green-800: #18594f;
-  --primitive-green-900: #12483f;
-  --primitive-amber-50: #fbf6ec;
-  --primitive-amber-200: #e8d1a9;
-  --primitive-amber-600: #a96f1f;
-  --primitive-amber-700: #8f5c16;
-  --primitive-amber-800: #754a10;
-  --primitive-orange-50: #fcf3ee;
-  --primitive-orange-200: #f0c9b7;
-  --primitive-orange-600: #c65d2e;
-  --primitive-orange-700: #9e4923;
-  --primitive-red-50: #fbefed;
-  --primitive-red-200: #ecc0b8;
-  --primitive-red-600: #c2412d;
-  --primitive-red-700: #9f3222;
-  --primitive-red-800: #8c2a1d;
-  --primitive-blue-50: #eef4f9;
-  --primitive-blue-200: #c1d7e8;
-  --primitive-blue-600: #2f6591;
-  --primitive-blue-700: #28587e;
+  --primitive-paper-50: #f4f0e9;
+  --primitive-paper-100: #faf8f3;
+  --primitive-paper-200: #e0ddd6;
+  --primitive-ink-500: #9a968d;
+  --primitive-ink-600: #646861;
+  --primitive-ink-800: #3d423e;
+  --primitive-ink-900: #202522;
+  --primitive-forest-950: #23302b;
+  --primitive-green-50: #ebf2ee;
+  --primitive-green-200: #b9cec4;
+  --primitive-green-600: #3d735f;
+  --primitive-green-700: #2d4739;
+  --primitive-green-800: #23372e;
+  --primitive-green-900: #1c2d25;
+  --primitive-amber-50: #f8f1e4;
+  --primitive-amber-200: #e5cda5;
+  --primitive-amber-600: #c4862a;
+  --primitive-amber-700: #a86f22;
+  --primitive-amber-800: #7a5118;
+  --primitive-orange-50: #f8ece9;
+  --primitive-orange-200: #e1bbb3;
+  --primitive-orange-600: #b0473b;
+  --primitive-orange-700: #7e2f27;
+  --primitive-red-50: #f4e4e1;
+  --primitive-red-200: #d7aaa2;
+  --primitive-red-600: #8f2f29;
+  --primitive-red-700: #74241f;
+  --primitive-red-800: #6f2924;
+  --primitive-blue-50: #eef2f4;
+  --primitive-blue-200: #cbd5db;
+  --primitive-blue-600: #5c6f80;
+  --primitive-blue-700: #435463;
 
   /* Primitive spacing */
   --space-1: 0.25rem;
@@ -44,8 +45,8 @@
 
   /* Primitive radius */
   --radius-xs: 0.25rem;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
   --radius-pill: 9999px;
   --radius-control: var(--radius-sm);
   --radius-card: var(--radius-md);
@@ -53,23 +54,25 @@
   /* Primitive typography */
   --font-family-sans:
     "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+  --font-family-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
   --font-family-mono: "IBM Plex Mono", "Cascadia Mono", Consolas, monospace;
 
   /* Semantic color */
-  --semantic-color-surface-page: var(--primitive-neutral-50);
-  --semantic-color-surface-panel: var(--primitive-white);
-  --semantic-color-surface-subtle: var(--primitive-neutral-100);
-  --semantic-color-text-primary: var(--primitive-neutral-900);
-  --semantic-color-text-secondary: var(--primitive-neutral-600);
-  --semantic-color-text-disabled: var(--primitive-neutral-500);
+  --semantic-color-surface-page: var(--primitive-paper-50);
+  --semantic-color-surface-panel: var(--primitive-paper-100);
+  --semantic-color-surface-subtle: var(--primitive-paper-200);
+  --semantic-color-surface-navigation: var(--primitive-forest-950);
+  --semantic-color-text-primary: var(--primitive-ink-900);
+  --semantic-color-text-secondary: var(--primitive-ink-600);
+  --semantic-color-text-disabled: var(--primitive-ink-500);
   --semantic-color-text-inverse: var(--primitive-white);
-  --semantic-color-border-default: var(--primitive-neutral-200);
-  --semantic-color-border-strong: var(--primitive-neutral-500);
+  --semantic-color-border-default: #d8d2c6;
+  --semantic-color-border-strong: #aba597;
   --semantic-color-action-primary: var(--primitive-green-700);
   --semantic-color-action-primary-hover: var(--primitive-green-800);
   --semantic-color-action-primary-active: var(--primitive-green-900);
-  --semantic-color-action-danger: var(--primitive-red-600);
-  --semantic-color-action-danger-hover: var(--primitive-red-700);
+  --semantic-color-action-danger: var(--primitive-orange-600);
+  --semantic-color-action-danger-hover: #943a30;
   --semantic-color-action-warning: var(--primitive-amber-600);
   --semantic-color-action-warning-hover: var(--primitive-amber-700);
   --semantic-color-focus-ring: var(--primitive-green-700);
@@ -77,7 +80,7 @@
   --semantic-color-status-success: var(--primitive-green-600);
   --semantic-color-status-success-surface: var(--primitive-green-50);
   --semantic-color-status-success-border: var(--primitive-green-200);
-  --semantic-color-status-success-foreground: var(--primitive-green-900);
+  --semantic-color-status-success-foreground: #244a3b;
   --semantic-color-status-warning: var(--primitive-amber-600);
   --semantic-color-status-warning-surface: var(--primitive-amber-50);
   --semantic-color-status-warning-border: var(--primitive-amber-200);
@@ -86,19 +89,21 @@
   --semantic-color-status-info-surface: var(--primitive-blue-50);
   --semantic-color-status-info-border: var(--primitive-blue-200);
   --semantic-color-status-info-foreground: var(--primitive-blue-700);
-  --semantic-color-status-danger: var(--primitive-red-600);
-  --semantic-color-status-danger-surface: var(--primitive-red-50);
-  --semantic-color-status-danger-border: var(--primitive-red-200);
-  --semantic-color-status-danger-foreground: var(--primitive-red-800);
+  --semantic-color-status-danger: var(--primitive-orange-600);
+  --semantic-color-status-danger-surface: var(--primitive-orange-50);
+  --semantic-color-status-danger-border: var(--primitive-orange-200);
+  --semantic-color-status-danger-foreground: var(--primitive-orange-700);
 
-  --semantic-color-risk-low: var(--primitive-green-600);
-  --semantic-color-risk-low-surface: var(--primitive-green-50);
-  --semantic-color-risk-low-border: var(--primitive-green-200);
-  --semantic-color-risk-low-foreground: var(--primitive-green-900);
-  --semantic-color-risk-medium: var(--primitive-amber-600);
-  --semantic-color-risk-medium-surface: var(--primitive-amber-50);
-  --semantic-color-risk-medium-border: var(--primitive-amber-200);
-  --semantic-color-risk-medium-foreground: var(--primitive-amber-800);
+  --semantic-color-risk-low: var(--semantic-color-status-success);
+  --semantic-color-risk-low-surface: var(--semantic-color-status-success-surface);
+  --semantic-color-risk-low-border: var(--semantic-color-status-success-border);
+  --semantic-color-risk-low-foreground: var(--semantic-color-status-success-foreground);
+  --semantic-color-risk-medium: var(--semantic-color-status-warning);
+  --semantic-color-risk-medium-surface: var(--semantic-color-status-warning-surface);
+  --semantic-color-risk-medium-border: var(--semantic-color-status-warning-border);
+  --semantic-color-risk-medium-foreground: var(
+    --semantic-color-status-warning-foreground
+  );
   --semantic-color-risk-high: var(--primitive-orange-600);
   --semantic-color-risk-high-surface: var(--primitive-orange-50);
   --semantic-color-risk-high-border: var(--primitive-orange-200);
@@ -109,8 +114,8 @@
   --semantic-color-risk-critical-foreground: var(--primitive-red-800);
 
   /* Overlay-only elevation */
-  --shadow-elevation-1: 0 1px 2px rgb(31 42 38 / 6%);
-  --shadow-overlay: 0 18px 60px rgb(31 42 38 / 14%), 0 2px 8px rgb(31 42 38 / 8%);
+  --shadow-elevation-1: 0 1px 2px rgb(32 37 34 / 6%);
+  --shadow-overlay: 0 18px 60px rgb(32 37 34 / 14%), 0 2px 8px rgb(32 37 34 / 8%);
 
   /* Compatibility aliases for the existing UI */
   --background: var(--semantic-color-surface-page);
@@ -144,6 +149,7 @@
   --color-surface-page: var(--semantic-color-surface-page);
   --color-surface-panel: var(--semantic-color-surface-panel);
   --color-surface-subtle: var(--semantic-color-surface-subtle);
+  --color-surface-navigation: var(--semantic-color-surface-navigation);
   --color-text-primary: var(--semantic-color-text-primary);
   --color-text-secondary: var(--semantic-color-text-secondary);
   --color-text-disabled: var(--semantic-color-text-disabled);
@@ -194,6 +200,7 @@
   --color-risk-critical-foreground: var(--semantic-color-risk-critical-foreground);
 
   --font-sans: var(--font-family-sans);
+  --font-serif: var(--font-family-serif);
   --font-mono: var(--font-family-mono);
 
   --spacing-1: var(--space-1);

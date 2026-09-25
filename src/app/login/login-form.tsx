@@ -35,15 +35,15 @@ export function LoginForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-lg border border-border bg-surface-panel p-6 shadow-overlay"
+      className="rounded-[var(--radius-card)] border border-border-default bg-surface-panel p-6"
     >
       <div className="mb-6 flex items-center gap-3">
-        <span className="grid size-11 place-items-center rounded-md bg-primary text-text-inverse">
+        <span className="grid size-11 place-items-center rounded-[var(--radius-control)] bg-action-primary text-text-inverse">
           <LockKeyhole className="size-5" aria-hidden="true" />
         </span>
         <div>
-          <h1 className="text-xl font-bold">登录文巡智护</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <h1 className="font-serif text-xl font-semibold">登录文巡智护</h1>
+          <p className="mt-1 text-sm text-text-secondary">
             使用演示账号进入对应角色工作台
           </p>
         </div>

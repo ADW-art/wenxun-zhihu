@@ -21,37 +21,37 @@
           "figmaName": "color/surface/page",
           "cssVariable": "--semantic-color-surface-page",
           "type": "COLOR",
-          "value": "#f4f7f5"
+          "value": "#f4f0e9"
         },
         {
           "figmaName": "color/surface/panel",
           "cssVariable": "--semantic-color-surface-panel",
           "type": "COLOR",
-          "value": "#ffffff"
+          "value": "#faf8f3"
         },
         {
           "figmaName": "color/surface/subtle",
           "cssVariable": "--semantic-color-surface-subtle",
           "type": "COLOR",
-          "value": "#e8efec"
+          "value": "#e0ddd6"
         },
         {
           "figmaName": "color/text/primary",
           "cssVariable": "--semantic-color-text-primary",
           "type": "COLOR",
-          "value": "#1f2a26"
+          "value": "#202522"
         },
         {
           "figmaName": "color/text/secondary",
           "cssVariable": "--semantic-color-text-secondary",
           "type": "COLOR",
-          "value": "#5a6963"
+          "value": "#646861"
         },
         {
           "figmaName": "color/text/disabled",
           "cssVariable": "--semantic-color-text-disabled",
           "type": "COLOR",
-          "value": "#7c8b85"
+          "value": "#9a968d"
         },
         {
           "figmaName": "color/text/inverse",
@@ -63,253 +63,259 @@
           "figmaName": "color/border/default",
           "cssVariable": "--semantic-color-border-default",
           "type": "COLOR",
-          "value": "#d8e1dd"
+          "value": "#d8d2c6"
         },
         {
           "figmaName": "color/border/strong",
           "cssVariable": "--semantic-color-border-strong",
           "type": "COLOR",
-          "value": "#7c8b85"
+          "value": "#aba597"
         },
         {
           "figmaName": "color/action/primary",
           "cssVariable": "--semantic-color-action-primary",
           "type": "COLOR",
-          "value": "#1f6f62"
+          "value": "#2d4739"
         },
         {
           "figmaName": "color/action/primary-hover",
           "cssVariable": "--semantic-color-action-primary-hover",
           "type": "COLOR",
-          "value": "#18594f"
+          "value": "#23372e"
         },
         {
           "figmaName": "color/action/primary-active",
           "cssVariable": "--semantic-color-action-primary-active",
           "type": "COLOR",
-          "value": "#12483f"
+          "value": "#1c2d25"
         },
         {
           "figmaName": "color/action/danger",
           "cssVariable": "--semantic-color-action-danger",
           "type": "COLOR",
-          "value": "#c2412d"
+          "value": "#b0473b"
         },
         {
           "figmaName": "color/action/danger-hover",
           "cssVariable": "--semantic-color-action-danger-hover",
           "type": "COLOR",
-          "value": "#9f3222"
+          "value": "#943a30"
         },
         {
           "figmaName": "color/action/warning",
           "cssVariable": "--semantic-color-action-warning",
           "type": "COLOR",
-          "value": "#a96f1f"
+          "value": "#c4862a"
         },
         {
           "figmaName": "color/action/warning-hover",
           "cssVariable": "--semantic-color-action-warning-hover",
           "type": "COLOR",
-          "value": "#8f5c16"
+          "value": "#a86f22"
         },
         {
           "figmaName": "color/action/focus-ring",
           "cssVariable": "--semantic-color-focus-ring",
           "type": "COLOR",
-          "value": "#1f6f62"
+          "value": "#2d4739"
         },
         {
           "figmaName": "color/status/success",
           "cssVariable": "--semantic-color-status-success",
           "type": "COLOR",
-          "value": "#2f7d68"
+          "value": "#3d735f"
         },
         {
           "figmaName": "color/status/success-surface",
           "cssVariable": "--semantic-color-status-success-surface",
           "type": "COLOR",
-          "value": "#ecf5f1"
+          "value": "#ebf2ee"
         },
         {
           "figmaName": "color/status/success-border",
           "cssVariable": "--semantic-color-status-success-border",
           "type": "COLOR",
-          "value": "#b9d9ce"
+          "value": "#b9cec4"
         },
         {
           "figmaName": "color/status/success-foreground",
           "cssVariable": "--semantic-color-status-success-foreground",
           "type": "COLOR",
-          "value": "#12483f"
+          "value": "#244a3b"
         },
         {
           "figmaName": "color/status/warning",
           "cssVariable": "--semantic-color-status-warning",
           "type": "COLOR",
-          "value": "#a96f1f"
+          "value": "#c4862a"
         },
         {
           "figmaName": "color/status/warning-surface",
           "cssVariable": "--semantic-color-status-warning-surface",
           "type": "COLOR",
-          "value": "#fbf6ec"
+          "value": "#f8f1e4"
         },
         {
           "figmaName": "color/status/warning-border",
           "cssVariable": "--semantic-color-status-warning-border",
           "type": "COLOR",
-          "value": "#e8d1a9"
+          "value": "#e5cda5"
         },
         {
           "figmaName": "color/status/warning-foreground",
           "cssVariable": "--semantic-color-status-warning-foreground",
           "type": "COLOR",
-          "value": "#754a10"
+          "value": "#7a5118"
         },
         {
           "figmaName": "color/status/info",
           "cssVariable": "--semantic-color-status-info",
           "type": "COLOR",
-          "value": "#2f6591"
+          "value": "#5c6f80"
         },
         {
           "figmaName": "color/status/info-surface",
           "cssVariable": "--semantic-color-status-info-surface",
           "type": "COLOR",
-          "value": "#eef4f9"
+          "value": "#eef2f4"
         },
         {
           "figmaName": "color/status/info-border",
           "cssVariable": "--semantic-color-status-info-border",
           "type": "COLOR",
-          "value": "#c1d7e8"
+          "value": "#cbd5db"
         },
         {
           "figmaName": "color/status/info-foreground",
           "cssVariable": "--semantic-color-status-info-foreground",
           "type": "COLOR",
-          "value": "#28587e"
+          "value": "#435463"
         },
         {
           "figmaName": "color/status/danger",
           "cssVariable": "--semantic-color-status-danger",
           "type": "COLOR",
-          "value": "#c2412d"
+          "value": "#b0473b"
         },
         {
           "figmaName": "color/status/danger-surface",
           "cssVariable": "--semantic-color-status-danger-surface",
           "type": "COLOR",
-          "value": "#fbefed"
+          "value": "#f8ece9"
         },
         {
           "figmaName": "color/status/danger-border",
           "cssVariable": "--semantic-color-status-danger-border",
           "type": "COLOR",
-          "value": "#ecc0b8"
+          "value": "#e1bbb3"
         },
         {
           "figmaName": "color/status/danger-foreground",
           "cssVariable": "--semantic-color-status-danger-foreground",
           "type": "COLOR",
-          "value": "#8c2a1d"
+          "value": "#7e2f27"
         },
         {
           "figmaName": "color/risk/low",
           "cssVariable": "--semantic-color-risk-low",
           "type": "COLOR",
-          "value": "#2f7d68"
+          "value": "#3d735f"
         },
         {
           "figmaName": "color/risk/low-surface",
           "cssVariable": "--semantic-color-risk-low-surface",
           "type": "COLOR",
-          "value": "#ecf5f1"
+          "value": "#ebf2ee"
         },
         {
           "figmaName": "color/risk/low-border",
           "cssVariable": "--semantic-color-risk-low-border",
           "type": "COLOR",
-          "value": "#b9d9ce"
+          "value": "#b9cec4"
         },
         {
           "figmaName": "color/risk/low-foreground",
           "cssVariable": "--semantic-color-risk-low-foreground",
           "type": "COLOR",
-          "value": "#12483f"
+          "value": "#244a3b"
         },
         {
           "figmaName": "color/risk/medium",
           "cssVariable": "--semantic-color-risk-medium",
           "type": "COLOR",
-          "value": "#a96f1f"
+          "value": "#c4862a"
         },
         {
           "figmaName": "color/risk/medium-surface",
           "cssVariable": "--semantic-color-risk-medium-surface",
           "type": "COLOR",
-          "value": "#fbf6ec"
+          "value": "#f8f1e4"
         },
         {
           "figmaName": "color/risk/medium-border",
           "cssVariable": "--semantic-color-risk-medium-border",
           "type": "COLOR",
-          "value": "#e8d1a9"
+          "value": "#e5cda5"
         },
         {
           "figmaName": "color/risk/medium-foreground",
           "cssVariable": "--semantic-color-risk-medium-foreground",
           "type": "COLOR",
-          "value": "#754a10"
+          "value": "#7a5118"
         },
         {
           "figmaName": "color/risk/high",
           "cssVariable": "--semantic-color-risk-high",
           "type": "COLOR",
-          "value": "#c65d2e"
+          "value": "#b0473b"
         },
         {
           "figmaName": "color/risk/high-surface",
           "cssVariable": "--semantic-color-risk-high-surface",
           "type": "COLOR",
-          "value": "#fcf3ee"
+          "value": "#f8ece9"
         },
         {
           "figmaName": "color/risk/high-border",
           "cssVariable": "--semantic-color-risk-high-border",
           "type": "COLOR",
-          "value": "#f0c9b7"
+          "value": "#e1bbb3"
         },
         {
           "figmaName": "color/risk/high-foreground",
           "cssVariable": "--semantic-color-risk-high-foreground",
           "type": "COLOR",
-          "value": "#9e4923"
+          "value": "#7e2f27"
         },
         {
           "figmaName": "color/risk/critical",
           "cssVariable": "--semantic-color-risk-critical",
           "type": "COLOR",
-          "value": "#c2412d"
+          "value": "#8f2f29"
         },
         {
           "figmaName": "color/risk/critical-surface",
           "cssVariable": "--semantic-color-risk-critical-surface",
           "type": "COLOR",
-          "value": "#fbefed"
+          "value": "#f4e4e1"
         },
         {
           "figmaName": "color/risk/critical-border",
           "cssVariable": "--semantic-color-risk-critical-border",
           "type": "COLOR",
-          "value": "#ecc0b8"
+          "value": "#d7aaa2"
         },
         {
           "figmaName": "color/risk/critical-foreground",
           "cssVariable": "--semantic-color-risk-critical-foreground",
           "type": "COLOR",
-          "value": "#8c2a1d"
+          "value": "#6f2924"
+        },
+        {
+          "figmaName": "color/surface/navigation",
+          "cssVariable": "--semantic-color-surface-navigation",
+          "type": "COLOR",
+          "value": "#23302b"
         }
       ]
     },
@@ -373,13 +379,13 @@
           "figmaName": "radius/control",
           "cssVariable": "--radius-control",
           "type": "FLOAT",
-          "value": "6"
+          "value": "4"
         },
         {
           "figmaName": "radius/card",
           "cssVariable": "--radius-card",
           "type": "FLOAT",
-          "value": "8"
+          "value": "6"
         },
         {
           "figmaName": "radius/pill",

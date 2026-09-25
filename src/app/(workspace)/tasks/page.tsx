@@ -3,6 +3,7 @@ import { ArrowRight, CalendarClock, Route } from "lucide-react";
 import { Role } from "@prisma/client";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { PageHeader } from "@/components/page-header";
 import { RiskBadge } from "@/components/ui/risk-badge";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { formatDate } from "@/lib/utils";
@@ -33,16 +34,12 @@ export default async function TasksPage() {
   });
 
   return (
-    <div className="space-y-7">
-      <header>
-        <p className="font-mono text-xs font-semibold text-primary">
-          RECTIFICATION QUEUE
-        </p>
-        <h1 className="mt-2 text-3xl font-bold tracking-normal">整改任务</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          跟踪责任、期限、证据和复核结论。
-        </p>
-      </header>
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Rectification queue"
+        title="整改任务"
+        description="跟踪责任、期限、证据和复核结论。"
+      />
 
       <div className="overflow-hidden rounded-lg border border-border bg-surface-panel">
         {tasks.length === 0 ? (

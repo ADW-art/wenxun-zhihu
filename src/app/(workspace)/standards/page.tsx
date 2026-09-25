@@ -1,5 +1,6 @@
 import { ExternalLink, ShieldAlert } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { PageHeader } from "@/components/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default async function StandardsPage() {
@@ -13,14 +14,12 @@ export default async function StandardsPage() {
   });
 
   return (
-    <div className="space-y-7">
-      <header>
-        <p className="font-mono text-xs font-semibold text-primary">EVIDENCE LIBRARY</p>
-        <h1 className="mt-2 text-3xl font-bold tracking-normal">规范知识库</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          正式标准与项目演示规则分开标记，智能体只能引用已登记内容。
-        </p>
-      </header>
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Evidence library"
+        title="规范知识库"
+        description="正式标准与项目演示规则分开标记，智能体只能引用已登记内容。"
+      />
 
       <div className="space-y-5">
         {documents.map((document) => (

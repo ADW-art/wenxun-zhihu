@@ -67,6 +67,7 @@ npm run mcp:inspect
 npm run format:check
 npm run lint
 npm run typecheck
+npm run ui:sync
 npm run ui:check
 npm test
 npm run build

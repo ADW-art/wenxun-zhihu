@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -15,6 +14,8 @@ import { Role } from "@prisma/client";
 import { auth } from "@/auth";
 import { inspectionAgentOutputSchema } from "@/agent/schemas";
 import { Button } from "@/components/ui/button";
+import { EvidenceGallery } from "@/components/evidence-gallery";
+import { PageHeader } from "@/components/page-header";
 import { SubmitButton } from "@/components/submit-button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { RiskBadge } from "@/components/ui/risk-badge";
@@ -90,7 +91,7 @@ export default async function InspectionDetailPage({
     session.user.role === Role.ADMIN;
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-6">
       <div>
         <Button asChild variant="ghost" size="sm" className="-ml-2">
           <Link href="/inspections">
@@ -122,22 +123,13 @@ export default async function InspectionDetailPage({
         </p>
       ) : null}
 
-      <header className="rounded-lg border border-border bg-surface-panel p-6">
-        <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-start">
-          <div>
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="font-mono text-xs font-semibold text-primary">
-                {inspection.building.code}
-              </span>
-              <StatusBadge status={inspection.status} />
-            </div>
-            <h1 className="mt-3 text-3xl font-bold">{inspection.building.name}</h1>
-            <p className="mt-3 text-sm text-muted-foreground">
-              {inspection.season} · {inspection.weather} · 巡查人{" "}
-              {inspection.inspector.name}
-            </p>
-          </div>
-          {canAnalyze &&
+      <PageHeader
+        eyebrow={inspection.building.code}
+        title="巡查详情 · 证据工作台"
+        description={`${inspection.building.name} · ${inspection.season} · ${inspection.weather} · 执行人 ${inspection.inspector.name} · ${formatDateTime(inspection.createdAt)}`}
+        status={<StatusBadge status={inspection.status} />}
+        actions={
+          canAnalyze &&
           (inspection.status === "DRAFT" ||
             inspection.status === "SUBMITTED" ||
             inspection.status === "ANALYZING") ? (
@@ -148,69 +140,85 @@ export default async function InspectionDetailPage({
                 提交并运行智能分析
               </SubmitButton>
             </form>
-          ) : null}
-        </div>
+          ) : null
+        }
+      />
 
-        <div className="mt-6 rounded-md border border-border bg-muted/35 p-4">
-          <p className="text-xs font-semibold text-muted-foreground">现场观察</p>
+      <section className="overflow-hidden rounded-[var(--radius-card)] border border-border-default bg-surface-panel">
+        <div className="grid grid-cols-2 divide-x divide-y divide-border-default lg:grid-cols-4 lg:divide-y-0">
+          {[
+            ["01", "现场记录", "已完成", true],
+            ["02", "AI 初判", latestRun ? "已完成" : "待开始", Boolean(latestRun)],
+            [
+              "03",
+              "人工复核",
+              inspection.status === "PENDING_REVIEW" ? "当前步骤" : "待处理",
+              inspection.status !== "PENDING_REVIEW",
+            ],
+            [
+              "04",
+              "整改闭环",
+              inspection.status === "CLOSED" ? "已完成" : "待开始",
+              inspection.status === "CLOSED",
+            ],
+          ].map(([number, title, status, complete]) => (
+            <div key={String(number)} className="flex items-center gap-3 p-4">
+              <span
+                className={`grid size-7 shrink-0 place-items-center rounded-full border font-mono text-[11px] font-semibold ${
+                  complete
+                    ? "border-action-primary bg-action-primary text-text-inverse"
+                    : "border-border-strong text-text-secondary"
+                }`}
+              >
+                {String(number)}
+              </span>
+              <div>
+                <p className="text-sm font-semibold">{String(title)}</p>
+                <p className="mt-0.5 text-[11px] text-text-secondary">
+                  {String(status)}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="border-t border-border-default bg-surface-page px-5 py-4">
+          <p className="text-xs font-semibold text-text-secondary">现场观察</p>
           <p className="mt-2 text-sm leading-7">{inspection.summary}</p>
         </div>
-      </header>
+      </section>
 
       <section className="grid gap-5 xl:grid-cols-[1.45fr_0.55fr]">
         <div className="space-y-5">
-          <Card>
-            <CardHeader>
-              <h2 className="text-lg font-bold">现场证据</h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                来源、授权和文件信息随巡查记录保存。
-              </p>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {inspection.evidence.length === 0 ? (
-                <p className="rounded-md border border-dashed border-border p-4 text-sm text-muted-foreground">
-                  本次巡查未上传文件
+          <section className="rounded-[var(--radius-card)] border border-border-default bg-surface-panel p-5">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <h2 className="font-serif text-lg font-semibold">原始证据</h2>
+                <p className="mt-1 text-xs text-text-secondary">
+                  现场照片、观察记录和环境信息保持原始顺序。
                 </p>
-              ) : (
-                inspection.evidence.map((evidence) => (
-                  <div
-                    key={evidence.id}
-                    className="overflow-hidden rounded-md border border-border"
-                  >
-                    {evidence.storageKey && evidence.mimeType.startsWith("image/") ? (
-                      <Image
-                        src={`/api/files/${evidence.storageKey}`}
-                        alt={evidence.altText ?? evidence.originalName}
-                        width={640}
-                        height={360}
-                        unoptimized
-                        className="h-40 w-full object-cover"
-                      />
-                    ) : null}
-                    <div className="p-3">
-                      <p className="truncate text-sm font-semibold">
-                        {evidence.originalName}
-                      </p>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        {evidence.kind} · {evidence.sourceType} ·{" "}
-                        {Math.ceil(evidence.sizeBytes / 1024)} KB
-                      </p>
-                      {evidence.storageKey ? (
-                        <a
-                          href={`/api/files/${evidence.storageKey}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-2 inline-flex text-xs font-semibold text-primary hover:underline"
-                        >
-                          查看原文件
-                        </a>
-                      ) : null}
-                    </div>
-                  </div>
-                ))
-              )}
-            </CardContent>
-          </Card>
+              </div>
+              <span className="text-xs text-text-secondary">
+                共 {inspection.evidence.length} 项
+              </span>
+            </div>
+            <EvidenceGallery
+              className="mt-4"
+              items={inspection.evidence.map((evidence) => ({
+                id: evidence.id,
+                src: evidence.storageKey
+                  ? `/api/files/${evidence.storageKey}`
+                  : undefined,
+                alt: evidence.altText ?? evidence.originalName,
+                title: evidence.originalName,
+                meta: `${evidence.kind} · ${evidence.sourceType} · ${Math.ceil(
+                  evidence.sizeBytes / 1024,
+                )} KB`,
+                href: evidence.storageKey
+                  ? `/api/files/${evidence.storageKey}`
+                  : undefined,
+              }))}
+            />
+          </section>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">

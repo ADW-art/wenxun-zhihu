@@ -95,12 +95,12 @@ function resolveVariable(
     throw new Error(`Token 不存在: ${name}`);
   }
 
-  const exactReference = raw.match(/^var\((--[\w-]+)\)$/);
+  const exactReference = raw.match(/^var\(\s*(--[\w-]+)\s*\)$/);
   if (exactReference) {
     return resolveVariable(exactReference[1], declarations, [...stack, name]);
   }
 
-  return raw.replace(/var\((--[\w-]+)\)/g, (_, dependency: string) =>
+  return raw.replace(/var\(\s*(--[\w-]+)\s*\)/g, (_, dependency: string) =>
     resolveVariable(dependency, declarations, [...stack, name]),
   );
 }

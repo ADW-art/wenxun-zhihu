@@ -33,22 +33,24 @@ radius/control           -> --radius-control
 
 ### 3.1 Color
 
-| Semantic Token                  | 值        | 用途                 |
-| ------------------------------- | --------- | -------------------- |
-| `--color-surface-page`          | `#F4F7F5` | 页面背景             |
-| `--color-surface-panel`         | `#FFFFFF` | 内容面板             |
-| `--color-surface-subtle`        | `#E8EFEC` | 次级区域             |
-| `--color-text-primary`          | `#1F2A26` | 标题和正文           |
-| `--color-text-secondary`        | `#5A6963` | 说明和辅助信息       |
-| `--color-border-default`        | `#D8E1DD` | 分隔和输入边框       |
-| `--color-action-primary`        | `#1F6F62` | 主操作和 Focus       |
-| `--color-action-primary-hover`  | `#18594F` | 主操作 Hover         |
-| `--color-action-primary-active` | `#12483F` | 主操作 Active        |
-| `--color-status-success`        | `#2F7D68` | 成功和已关闭         |
-| `--color-status-warning`        | `#A96F1F` | 待处理和临近期限     |
-| `--color-status-info`           | `#2F6591` | 分析中、系统提示     |
-| `--color-status-danger`         | `#C2412D` | 错误、驳回和紧急风险 |
-| `--color-risk-high`             | `#C65D2E` | 高风险               |
+| Semantic Token                  | 值        | 用途               |
+| ------------------------------- | --------- | ------------------ |
+| `--color-surface-page`          | `#F4F0E9` | 宣纸工作区         |
+| `--color-surface-panel`         | `#FAF8F3` | 内容面板           |
+| `--color-surface-subtle`        | `#E0DDD6` | 次级区域           |
+| `--color-surface-navigation`    | `#23302B` | 深墨绿导航         |
+| `--color-text-primary`          | `#202522` | 标题和正文         |
+| `--color-text-secondary`        | `#646861` | 说明和辅助信息     |
+| `--color-border-default`        | `#D8D2C6` | 分隔和输入边框     |
+| `--color-action-primary`        | `#2D4739` | 主操作和 Focus     |
+| `--color-action-primary-hover`  | `#23372E` | 主操作 Hover       |
+| `--color-action-primary-active` | `#1C2D25` | 主操作 Active      |
+| `--color-status-success`        | `#3D735F` | 成功和已关闭       |
+| `--color-status-warning`        | `#C4862A` | 待处理和临近期限   |
+| `--color-status-info`           | `#5C6F80` | 分析中、系统提示   |
+| `--color-status-danger`         | `#B0473B` | 错误、驳回和高风险 |
+| `--color-risk-high`             | `#B0473B` | 高风险             |
+| `--color-risk-critical`         | `#8F2F29` | 紧急风险           |
 
 状态色必须同时配合文字、图标或形状，不允许仅靠颜色区分。
 

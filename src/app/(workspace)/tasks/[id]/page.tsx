@@ -1,16 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeft,
-  CheckCircle2,
-  CircleX,
-  Clock3,
-  FileText,
-  ListChecks,
-} from "lucide-react";
+import { ArrowLeft, CheckCircle2, CircleX, Clock3, FileText } from "lucide-react";
 import { Role } from "@prisma/client";
 import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
+import { EvidenceGallery } from "@/components/evidence-gallery";
+import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { RiskBadge } from "@/components/ui/risk-badge";
 import { StatusBadge } from "@/components/ui/status-badge";
@@ -80,7 +75,7 @@ export default async function TaskDetailPage({
     task.status === "PENDING_REVIEW";
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-6">
       <div>
         <Button asChild variant="ghost" size="sm" className="-ml-2">
           <Link href="/tasks">
@@ -102,44 +97,42 @@ export default async function TaskDetailPage({
         </p>
       ) : null}
 
-      <header className="rounded-lg border border-border bg-surface-panel p-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <StatusBadge status={task.status} />
-          <RiskBadge severity={task.priority} />
-          <span className="font-mono text-xs text-muted-foreground">{task.id}</span>
-        </div>
-        <h1 className="mt-4 text-3xl font-bold">{task.title}</h1>
-        <p className="mt-4 max-w-4xl text-sm leading-7">{task.description}</p>
-        <div className="mt-5 grid gap-4 border-t border-border pt-5 sm:grid-cols-3">
+      <PageHeader
+        eyebrow={`任务 ${task.id}`}
+        title={task.title}
+        description={task.description}
+        status={
+          <div className="flex flex-wrap gap-2">
+            <StatusBadge status={task.status} />
+            <RiskBadge severity={task.priority} />
+          </div>
+        }
+      />
+
+      <section className="rounded-[var(--radius-card)] border border-border-default bg-surface-panel">
+        <div className="grid gap-4 p-5 sm:grid-cols-3">
           <div>
-            <p className="text-xs text-muted-foreground">关联建筑</p>
+            <p className="text-xs text-text-secondary">关联建筑</p>
             <p className="mt-1 font-semibold">
               {task.finding.inspection.building.name}
             </p>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground">责任人</p>
+            <p className="text-xs text-text-secondary">责任人</p>
             <p className="mt-1 font-semibold">{task.assignee.name}</p>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground">完成期限</p>
+            <p className="text-xs text-text-secondary">完成期限</p>
             <p className="mt-1 font-semibold">{formatDate(task.dueAt)}</p>
           </div>
         </div>
-      </header>
+        <div className="border-t border-border-default bg-surface-page px-5 py-4 text-sm leading-7">
+          {task.acceptanceCriteria}
+        </div>
+      </section>
 
       <section className="grid gap-5 xl:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-5">
-          <Card>
-            <CardHeader className="flex flex-row items-center gap-3">
-              <ListChecks className="size-5 text-primary" aria-hidden="true" />
-              <h2 className="text-lg font-bold">验收标准</h2>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm leading-7">{task.acceptanceCriteria}</p>
-            </CardContent>
-          </Card>
-
           <Card>
             <CardHeader>
               <h2 className="text-lg font-bold">整改证据</h2>
@@ -148,41 +141,22 @@ export default async function TaskDetailPage({
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
-              {task.evidence.length === 0 ? (
-                <p className="rounded-md border border-dashed border-border p-5 text-sm text-muted-foreground">
-                  暂未提交整改证据
-                </p>
-              ) : (
-                task.evidence.map((evidence) => (
-                  <div
-                    key={evidence.id}
-                    className="rounded-md border border-border p-4"
-                  >
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <p className="text-sm font-semibold">
-                        {evidence.submittedBy.name}
-                      </p>
-                      <span className="text-xs text-muted-foreground">
-                        {formatDateTime(evidence.createdAt)}
-                      </span>
-                    </div>
-                    <p className="mt-3 text-sm leading-6">{evidence.description}</p>
-                    <p className="mt-3 text-xs text-muted-foreground">
-                      类型：{evidence.kind} · 来源：{evidence.sourceType}
-                    </p>
-                    {evidence.storageKey ? (
-                      <a
-                        href={`/api/files/${evidence.storageKey}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-3 inline-flex text-xs font-semibold text-primary hover:underline"
-                      >
-                        打开证据文件
-                      </a>
-                    ) : null}
-                  </div>
-                ))
-              )}
+              <EvidenceGallery
+                items={task.evidence.map((evidence) => ({
+                  id: evidence.id,
+                  src: evidence.storageKey
+                    ? `/api/files/${evidence.storageKey}`
+                    : undefined,
+                  alt: evidence.description,
+                  title: evidence.description,
+                  meta: `${evidence.submittedBy.name} · ${formatDateTime(
+                    evidence.createdAt,
+                  )} · ${evidence.kind}`,
+                  href: evidence.storageKey
+                    ? `/api/files/${evidence.storageKey}`
+                    : undefined,
+                }))}
+              />
 
               {canSubmit ? (
                 <form

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarClock, MapPin } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { RiskBadge } from "@/components/ui/risk-badge";
@@ -32,7 +33,7 @@ export default async function BuildingDetailPage({
   if (!building) notFound();
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-6">
       <div>
         <Button asChild variant="ghost" size="sm" className="-ml-2">
           <Link href="/buildings">
@@ -42,31 +43,28 @@ export default async function BuildingDetailPage({
         </Button>
       </div>
 
-      <header className="rounded-lg border border-border bg-surface-panel p-6">
-        <p className="font-mono text-xs font-semibold text-primary">{building.code}</p>
-        <div className="mt-3 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
-          <div>
-            <h1 className="text-3xl font-bold">{building.name}</h1>
-            <p className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="size-4" aria-hidden="true" />
-              {building.addressLabel}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {building.riskTags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-        <p className="mt-5 max-w-4xl text-sm leading-7 text-muted-foreground">
-          {building.summary}
+      <PageHeader
+        eyebrow={building.code}
+        title={building.name}
+        description={building.summary}
+      />
+
+      <section className="rounded-[var(--radius-card)] border border-border-default bg-surface-panel p-5">
+        <p className="flex items-center gap-2 text-sm text-text-secondary">
+          <MapPin className="size-4" aria-hidden="true" />
+          {building.addressLabel} · {building.era}
         </p>
-      </header>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {building.riskTags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-[4px] border border-border-default bg-surface-subtle px-3 py-1 text-xs"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </section>
 
       <section className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
         <Card>

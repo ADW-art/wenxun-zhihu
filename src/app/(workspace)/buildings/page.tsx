@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Building2, MapPin } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { PageHeader } from "@/components/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -18,16 +19,12 @@ export default async function BuildingsPage() {
   });
 
   return (
-    <div className="space-y-7">
-      <header>
-        <p className="font-mono text-xs font-semibold text-primary">
-          HERITAGE REGISTER
-        </p>
-        <h1 className="mt-2 text-3xl font-bold tracking-normal">文物建筑档案</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          演示档案已脱敏，不保存精确坐标和安防信息。
-        </p>
-      </header>
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Heritage register"
+        title="文物建筑档案"
+        description="演示档案已脱敏，不保存精确坐标和安防信息。"
+      />
 
       <section className="grid gap-5 lg:grid-cols-2 2xl:grid-cols-3">
         {buildings.map((building) => (
